@@ -1,0 +1,39 @@
+.user-data-frame {
+  position: page;
+  box-sizing: border-box;
+  overflow: auto;
+  background: #ffffff;
+  width: initial ;
+  height: initial ;
+}
+.group {
+  top: auto;
+  left: auto;
+  position: relative;
+  display: flow;
+  height: 50%;
+  margin: auto;
+  width: 20%;
+}
+.tab {
+  width: 30%;
+  height: 80px;
+}
+
+.form-contact {
+  height: 50%;
+}
+
+.buttons {
+  margin: 10px 0px 0px 0px;
+
+}
+
+.button-left {
+  float: left;
+}
+
+.button-right {
+  float: right;
+}
+
