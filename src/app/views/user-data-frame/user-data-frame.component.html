@@ -1,35 +1,53 @@
 <div class="user-data-frame">
   <div class="group">
-    <app-logo-tab
-      [label]="'CREFIX Logo'"
-      [state]="'Default'"
-      [active]="'Off'"
-      class="tab_2-4331"
-    ></app-logo-tab>
-    <app-form-contact class="form-contact"></app-form-contact>
+    <div class="tab">
+      <span class="tab-text-label">{{ tab_label }}</span>
+    </div>
+
+    <div class="form-contact">
+      <div class="input-field">
+        <span class="text-label">{{ first_name_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="Max" value="{{first_name_value}}" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ last_name_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="Mustermann" value="{{last_name_value}}" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ phone_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="0660-1234567890" value="{{phone_value}}" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ email_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="abc@mail.com" value="{{email_value}}" [contentEditable]="true">
+        </div>
+      </div>
+    </div>
+
     <div class="buttons">
+
       <div class="button-left">
-        <app-back-button
-          [hasIconEnd]="false"
-          [hasIconStart]="false"
-          [label]="'Zurück'"
-          [variant]="'Primary'"
-          [state]="'Default'"
-          [size]="'Medium'"
-        >
-        </app-back-button>
+        <div class="back-button">
+          <span class="back-text-button">{{ back_button_label }}</span>
+        </div>
       </div>
+
       <div class="button-right">
-        <app-forward-button
-          [hasIconEnd]="false"
-          [hasIconStart]="false"
-          [label]="'Weiter'"
-          [variant]="'Primary'"
-          [state]="'Default'"
-          [size]="'Medium'"
-        >
-        </app-forward-button>
+        <div class="forward-button" (click)="saveUserData()">
+          <span class="forward-text-button">{{ forward_button_label }}</span>
+        </div>
       </div>
+
     </div>
   </div>
 </div>

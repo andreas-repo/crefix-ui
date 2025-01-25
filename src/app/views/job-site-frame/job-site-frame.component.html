@@ -1,1 +1,53 @@
-<p>job-site-frame works!</p>
+<div class="job-site-frame">
+  <div class="group">
+    <div class="tab">
+      <span class="tab-text-label">{{ tab_label }}</span>
+    </div>
+
+    <div class="form-contact">
+      <div class="input-field">
+        <span class="text-label">{{ job_site_address_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="Musterstraße 1a" value="{{address_value}}" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ city_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="Musterstadt" value="{{city_value}}" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ zip_code_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="1234" value="{{zip_code_value}}" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ country_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="Musterland" value="{{country_value}}" [contentEditable]="true">
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons">
+
+      <div class="button-left">
+        <div class="back-button" (click)="returnOnePage()">
+          <span class="back-text-button">{{ back_button_label }}</span>
+        </div>
+      </div>
+
+      <div class="button-right">
+        <div class="forward-button" (click)="saveJobSiteData()">
+          <span class="forward-text-button">{{ forward_button_label }}</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
