@@ -1,9 +1,14 @@
 import {Component, Input} from '@angular/core';
 import {Router} from '@angular/router';
+import {FormsModule} from '@angular/forms';
+import {CmDocument} from '../../models/cm-document.model';
+import {PassDataService} from '../../services/pass-data.service';
 
 @Component({
   selector: 'app-job-site-frame',
-  imports: [],
+  imports: [
+    FormsModule
+  ],
   templateUrl: './job-site-frame.component.html',
   styleUrl: './job-site-frame.component.css'
 })
@@ -12,18 +17,37 @@ export class JobSiteFrameComponent {
   back_button_label: string = 'Zurück';
   forward_button_label: string = 'Weiter';
   job_site_address_label: string = 'Adresse';
-  @Input() address_value: string = "";
+  address_value: string = "";
   city_label: string = 'Stadt';
-  @Input() city_value: string = "";
+  city_value: string = "";
   zip_code_label: string = 'ZIP Code';
-  @Input() zip_code_value: string = "";
+  zip_code_value: string = "";
   country_label: string = 'Land';
-  @Input() country_value: string = "";
+  country_value: string = "";
 
-  constructor(private router: Router) { }
+  cmDocumentData: CmDocument = new CmDocument();
+
+  updateCmDocument() {
+    this.passDataService.setCmDocumentObject(this.cmDocumentData);
+  }
+
+  constructor(private router: Router, private passDataService: PassDataService) {
+    this.passDataService.getCmDocument.subscribe((cmDocument=>
+        this.cmDocumentData = cmDocument
+
+    ));
+    console.log(this.cmDocumentData);
+  }
 
 
   saveJobSiteData() {
+    this.cmDocumentData.address = this.address_value;
+    this.cmDocumentData.city = this.city_value;
+    this.cmDocumentData.zip = this.zip_code_value;
+    this.cmDocumentData.country = this.country_value;
+    console.log(this.cmDocumentData);
+    this.updateCmDocument();
+
     this.router.navigate(['/documents-frame']);
   }
 

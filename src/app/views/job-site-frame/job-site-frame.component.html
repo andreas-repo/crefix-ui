@@ -8,28 +8,28 @@
       <div class="input-field">
         <span class="text-label">{{ job_site_address_label }}</span>
         <div class="input-element">
-          <input class="input-field" placeholder="Musterstraße 1a" value="{{address_value}}" [contentEditable]="true">
+          <input class="input-field" placeholder="Musterstraße 1a" [(ngModel)]="address_value" [contentEditable]="true">
         </div>
       </div>
 
       <div class="input-field">
         <span class="text-label">{{ city_label }}</span>
         <div class="input-element">
-          <input class="input-field" placeholder="Musterstadt" value="{{city_value}}" [contentEditable]="true">
+          <input class="input-field" placeholder="Musterstadt" [(ngModel)]="city_value" [contentEditable]="true">
         </div>
       </div>
 
       <div class="input-field">
         <span class="text-label">{{ zip_code_label }}</span>
         <div class="input-element">
-          <input class="input-field" placeholder="1234" value="{{zip_code_value}}" [contentEditable]="true">
+          <input class="input-field" placeholder="1234" [(ngModel)]="zip_code_value" [contentEditable]="true">
         </div>
       </div>
 
       <div class="input-field">
         <span class="text-label">{{ country_label }}</span>
         <div class="input-element">
-          <input class="input-field" placeholder="Musterland" value="{{country_value}}" [contentEditable]="true">
+          <input class="input-field" placeholder="Musterland" [(ngModel)]="country_value" [contentEditable]="true">
         </div>
       </div>
     </div>

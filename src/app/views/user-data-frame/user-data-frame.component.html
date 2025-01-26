@@ -8,28 +8,28 @@
       <div class="input-field">
         <span class="text-label">{{ first_name_label }}</span>
         <div class="input-element">
-          <input class="input-field" placeholder="Max" value="{{first_name_value}}" [contentEditable]="true">
+          <input class="input-field" placeholder="Max" [(ngModel)]="first_name_value" [contentEditable]="true">
         </div>
       </div>
 
       <div class="input-field">
         <span class="text-label">{{ last_name_label }}</span>
         <div class="input-element">
-          <input class="input-field" placeholder="Mustermann" value="{{last_name_value}}" [contentEditable]="true">
+          <input class="input-field" placeholder="Mustermann" [(ngModel)]="last_name_value" [contentEditable]="true">
         </div>
       </div>
 
       <div class="input-field">
         <span class="text-label">{{ phone_label }}</span>
         <div class="input-element">
-          <input class="input-field" placeholder="0660-1234567890" value="{{phone_value}}" [contentEditable]="true">
+          <input class="input-field" placeholder="0660-1234567890" [(ngModel)]="phone_value" [contentEditable]="true">
         </div>
       </div>
 
       <div class="input-field">
         <span class="text-label">{{ email_label }}</span>
         <div class="input-element">
-          <input class="input-field" placeholder="abc@mail.com" value="{{email_value}}" [contentEditable]="true">
+          <input class="input-field" placeholder="abc@mail.com" [(ngModel)]="email_value" [contentEditable]="true" >
         </div>
       </div>
     </div>
