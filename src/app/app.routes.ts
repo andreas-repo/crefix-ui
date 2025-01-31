@@ -6,6 +6,7 @@ import {MeasurementOneFrameComponent} from './views/measurement-one-frame/measur
 import {MeasurementTwoFrameComponent} from './views/measurement-two-frame/measurement-two-frame.component';
 import {MeasurementThreeFrameComponent} from './views/measurement-three-frame/measurement-three-frame.component';
 import {MeasurementFourFrameComponent} from './views/measurement-four-frame/measurement-four-frame.component';
+import {CameraFrameComponent} from './views/camera-frame/camera-frame.component';
 
 export const routes: Routes = [
   {path: 'user-data-frame', component: UserDataFrameComponent},
@@ -14,6 +15,7 @@ export const routes: Routes = [
   {path: 'measurement-two-frame/:id', component: MeasurementTwoFrameComponent},
   {path: 'measurement-three-frame/:id', component: MeasurementThreeFrameComponent},
   {path: 'measurement-four-frame/:id', component: MeasurementFourFrameComponent},
+  {path: 'camera-frame/:id', component: CameraFrameComponent},
   {path: '', redirectTo: '/user-data-frame', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent},
 ];

@@ -1,0 +1,14 @@
+<div>
+  <button (click)="checkPermissions()">Check Permissions</button>
+</div>
+
+<div *ngIf="camData">
+  <div>
+    <webcam [trigger]="$trigger" (imageCapture)="capture($event)"></webcam>
+    <button id="button" (click)="captureImage()"></button>
+  </div>
+</div>
+
+<div *ngIf="capturedImage">
+  <img [src]="capturedImage"  alt=""/>
+</div>
