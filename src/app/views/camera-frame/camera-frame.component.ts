@@ -16,7 +16,13 @@ export class CameraFrameComponent {
   permissionStatus: string = "";
   camData: any = null;
   capturedImage: any = '';
+  capturedImageBase64: any = '';
   trigger: Subject<void> = new Subject();
+
+
+  constructor() {
+    this.checkPermissions()
+  }
 
   get $trigger(): Observable<void> {
     return this.trigger.asObservable();
@@ -36,6 +42,7 @@ export class CameraFrameComponent {
   capture(event: WebcamImage) {
     console.log("event", event);
     this.capturedImage = event.imageAsDataUrl;
+    this.capturedImage = event.imageAsBase64;
   }
 
   captureImage() {
