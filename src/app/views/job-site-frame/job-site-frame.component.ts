@@ -1,8 +1,10 @@
-import {Component, Input} from '@angular/core';
-import {Router} from '@angular/router';
+import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {CmDocument} from '../../models/cm-document.model';
 import {PassDataService} from '../../services/pass-data.service';
+import {DataService} from '../../services/data.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {firstValueFrom} from 'rxjs';
 
 @Component({
   selector: 'app-job-site-frame',
@@ -26,29 +28,29 @@ export class JobSiteFrameComponent {
   country_value: string = "";
 
   cmDocumentData: CmDocument = new CmDocument();
+  dataService: DataService;
+  id: string | null;
 
-  updateCmDocument() {
-    this.passDataService.setCmDocumentObject(this.cmDocumentData);
+  constructor(private router: Router, private route: ActivatedRoute, dataService: DataService) {
+    this.dataService = dataService;
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.dataService.getCmDocumentById(this.id).subscribe((data: CmDocument) => {
+      this.cmDocumentData = data;
+      console.log("Received data from /getCmDocumentById: " + JSON.stringify(this.cmDocumentData));
+    });
   }
 
-  constructor(private router: Router, private passDataService: PassDataService) {
-    this.passDataService.getCmDocument.subscribe((cmDocument=>
-        this.cmDocumentData = cmDocument
 
-    ));
-    console.log(this.cmDocumentData);
-  }
-
-
-  saveJobSiteData() {
+  async saveJobSiteData() {
     this.cmDocumentData.address = this.address_value;
     this.cmDocumentData.city = this.city_value;
     this.cmDocumentData.zip = this.zip_code_value;
     this.cmDocumentData.country = this.country_value;
-    console.log(this.cmDocumentData);
-    this.updateCmDocument();
 
-    this.router.navigate(['/documents-frame']);
+    await firstValueFrom(this.dataService.updateCmDocument(this.cmDocumentData.id.toString(), JSON.stringify(this.cmDocumentData)));
+    console.log("Saved job site data: " + JSON.stringify(this.cmDocumentData));
+
+    await this.router.navigate(['/measurement-one-frame', this.cmDocumentData.id]);
   }
 
   returnOnePage() {

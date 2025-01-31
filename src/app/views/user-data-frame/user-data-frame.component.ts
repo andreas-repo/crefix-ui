@@ -4,6 +4,7 @@ import {DataService} from '../../services/data.service';
 import {CmDocument} from '../../models/cm-document.model';
 import {FormsModule} from '@angular/forms';
 import {PassDataService} from '../../services/pass-data.service';
+import {firstValueFrom} from 'rxjs';
 
 @Component({
   selector: 'app-user-data-frame',
@@ -27,28 +28,26 @@ export class UserDataFrameComponent {
   email_value: string = '';
 
   cmDocumentData: CmDocument = new CmDocument();
+  dataService: DataService;
 
-  updateCmDocument() {
-    this.passDataService.setCmDocumentObject(this.cmDocumentData);
+  constructor(private router: Router, dataService: DataService) {
+      this.dataService = dataService;
+      this.dataService.initializeDocument().subscribe((data: CmDocument) => {
+      this.cmDocumentData = data;
+      console.log(this.cmDocumentData);
+
+    });
   }
 
-  constructor(private router: Router, private passDataService: PassDataService) {
-    this.passDataService.getCmDocument.subscribe((cmDocument=>
-      this.cmDocumentData = cmDocument
-
-    ));
-    console.log(this.cmDocumentData);
-  }
-
-  saveUserData() {
+  async saveUserData() {
     this.cmDocumentData.firstname = this.first_name_value;
     this.cmDocumentData.lastname = this.last_name_value;
     this.cmDocumentData.phone = this.phone_value;
     this.cmDocumentData.email = this.email_value;
-    console.log(this.cmDocumentData);
-    this.updateCmDocument();
 
-    //remove passing of obj to the next page with navigation and change to a dedicated service
-    this.router.navigate(['/job-site-frame']);
+    await firstValueFrom(this.dataService.updateCmDocument(this.cmDocumentData.id.toString(), JSON.stringify(this.cmDocumentData)));
+    console.log("Saved user data: " + JSON.stringify(this.cmDocumentData));
+
+    await this.router.navigate(['/job-site-frame', this.cmDocumentData.id]);
   }
 }

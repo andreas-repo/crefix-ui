@@ -1,0 +1,111 @@
+<div class="job-site-frame">
+  <div class="group">
+    <div class="tab">
+      <span class="tab-text-label">{{ tab_label }}</span>
+    </div>
+
+    <div class="form-contact">
+      <div class="input-field">
+        <span class="text-label">{{ floor_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="Stockwerk 3, Tür 2, Wohnzimmer" [(ngModel)]="floor_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ layed_at_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="01.01.202x" [(ngModel)]="layed_at_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ date_of_measurement_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="01.01.202x" [(ngModel)]="date_of_measurement_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ initial_weight_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="15 kg" [(ngModel)]="initial_weight_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ pressure_gauge_display_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="5 bar" [(ngModel)]="pressure_gauge_display_value" [contentEditable]="true">
+        </div>
+       </div>
+
+      <div class="input-field">
+         <span class="text-label">{{ cm_value_label }}</span>
+         <div class="input-element">
+          <input class="input-field" placeholder="CM%" [(ngModel)]="cm_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ temperature_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="35 C" [(ngModel)]="temperature_value" [contentEditable]="true">
+        </div>
+       </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ humidity_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="34%" [(ngModel)]="humidity_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ surface_temperature_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="35 C" [(ngModel)]="surface_temperature_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ installation_thickness_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="X mm" [(ngModel)]="installation_thickness_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ underfloor_heating_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="Ja oder Nein" [(ngModel)]="underfloor_heating_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ ready_according_of_technical_datasheet_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="Ja oder Nein" [(ngModel)]="ready_according_of_technical_datasheet_value" [contentEditable]="true">
+        </div>
+      </div>
+    </div>
+
+
+    <div class="buttons">
+
+      <div class="button-left">
+        <div class="back-button" (click)="returnOnePage()">
+          <span class="back-text-button">{{ back_button_label }}</span>
+        </div>
+      </div>
+
+      <div class="button-right">
+        <div class="forward-button" (click)="saveMeasurementOneData()">
+          <span class="forward-text-button">{{ forward_button_label }}</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
