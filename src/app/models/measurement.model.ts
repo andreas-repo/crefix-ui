@@ -4,6 +4,8 @@ import {Deserializable} from './deserializable.model';
 @JsonObject('Measurement')
 export class Measurement implements Deserializable {
 
+  @JsonProperty('id', String)
+  id?: string = '';
   @JsonProperty('floor', String)
   floor?: string = '';
   @JsonProperty('layedAt', String)
@@ -28,6 +30,8 @@ export class Measurement implements Deserializable {
   underfloorHeating?: string = '';
   @JsonProperty('readyAccordingOfTechnicalDatasheet', String)
   readyAccordingOfTechnicalDatasheet?: string = '';
+  @JsonProperty('pictureBase64', String)
+  pictureBase64?: string = '';
 
   deserialize(input: any) : this {
     Object.assign(this, input);

@@ -76,7 +76,7 @@ export class MeasurementFourFrameComponent {
     await firstValueFrom(this.dataService.updateCmDocument(this.cmDocumentData.id.toString(), JSON.stringify(this.cmDocumentData)));
 
 
-    await this.router.navigate(['/camera-frame', this.id]);
+    await this.router.navigate(['/take-image-frame', this.cmDocumentData.measurements[0].id]);
   }
 
   returnOnePage() {

@@ -11,13 +11,9 @@
   left: auto;
   position: relative;
   display: flow;
-  height: 50%;
+  height: 100%;
   margin: auto;
   width: 20%;
-}
-.tab {
-  width: 30%;
-  height: 80px;
 }
 
 .form-contact {
@@ -38,6 +34,8 @@
 }
 
 .tab {
+  width: 100%;
+  height: 80px;
   padding: 0px 4px 0px 4px;
   margin: 0px 4px 20px 4px;
   display: flex;
@@ -54,8 +52,8 @@
   border-left-width: 0px;
   border-top-width: 0px;
   border-right-width: 0px;
-  width: 100%;
-  height: 80px;
+  background-image: url('/assets/crefix_logo_small.jpg');
+  background-size: cover;
 }
 .tab-text-label {
   color: #000000;

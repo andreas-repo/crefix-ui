@@ -15,7 +15,7 @@ import {firstValueFrom} from 'rxjs';
   styleUrl: './user-data-frame.component.css'
 })
 export class UserDataFrameComponent {
-  tab_label : string = 'CREFIX APP';
+  tab_label : string = '';
   back_button_label: string = 'Zurück';
   forward_button_label: string = 'Weiter';
   first_name_label: string = 'Vorname';
