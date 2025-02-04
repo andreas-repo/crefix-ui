@@ -15,7 +15,7 @@ import {firstValueFrom} from 'rxjs';
   styleUrl: './job-site-frame.component.css'
 })
 export class JobSiteFrameComponent {
-  tab_label : string = 'CREFIX APP';
+  tab_label : string = '';
   back_button_label: string = 'Zurück';
   forward_button_label: string = 'Weiter';
   job_site_address_label: string = 'Adresse';
