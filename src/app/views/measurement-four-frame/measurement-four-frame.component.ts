@@ -17,7 +17,7 @@ import {firstValueFrom} from 'rxjs';
   styleUrl: './measurement-four-frame.component.css'
 })
 export class MeasurementFourFrameComponent {
-  tab_label : string = 'CREFIX APP';
+  tab_label : string = 'Vierter Messpunkt';
   back_button_label: string = 'Zurück';
   forward_button_label: string = 'Weiter';
   floor_label: string = 'Stockwerk / Wohnung / Raum';
