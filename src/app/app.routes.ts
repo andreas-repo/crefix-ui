@@ -18,10 +18,12 @@ import {
 import {
   MeasurementFourImageFrameComponent
 } from './views/measurement-four-frame/measurement-four-image-frame/measurement-four-image-frame.component';
+import {IdentificationIdFrameComponent} from './views/identification-id-frame/identification-id-frame.component';
 
 export const routes: Routes = [
   {path: 'user-data-frame', component: UserDataFrameComponent},
   {path: 'job-site-frame/:id', component: JobSiteFrameComponent},
+  {path: 'identification-id-frame/:id', component: IdentificationIdFrameComponent},
   {path: 'measurement-one-frame/:id', component: MeasurementOneFrameComponent},
   {path: 'measurement-one-image-frame/:id', component: MeasurementOneImageFrameComponent},
   {path: 'measurement-two-frame/:id', component: MeasurementTwoFrameComponent},

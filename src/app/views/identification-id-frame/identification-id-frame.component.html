@@ -1,0 +1,34 @@
+<div class="job-site-frame">
+  <div class="group">
+    <div class="tab">
+      <span class="tab-text-label">{{ tab_label }}</span>
+    </div>
+
+    <div class="form-contact">
+
+      <p id="identification_id_value">{{ identification_id_value }}</p>
+      <p>Identifikationsnummer</p>
+
+      <div id="identification_details">
+        <p>Bitte diese Identifikationsnummer in den Kamera-Aufnahmen sichtbar platzieren, da ansonst das Bild nicht angenommen werden kann und der Test neu ausgeführt werden muss um eine gültige Garantie zu erhalten.</p>
+      </div>
+
+    </div>
+
+    <div class="buttons">
+
+      <div class="button-left">
+        <div class="back-button" (click)="returnOnePage()">
+          <span class="back-text-button">{{ back_button_label }}</span>
+        </div>
+      </div>
+
+      <div class="button-right">
+        <div class="forward-button" (click)="saveIdentificationIdData()">
+          <span class="forward-text-button">{{ forward_button_label }}</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

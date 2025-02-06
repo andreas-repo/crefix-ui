@@ -1,34 +1,28 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {CmDocumentJson, ICmDocumentJson} from '../../models/cm-document.model';
-import {DataService} from '../../services/data.service';
-import {ActivatedRoute, Router} from '@angular/router';
 import {firstValueFrom} from 'rxjs';
+import {CmDocumentJson, ICmDocumentJson} from '../../models/cm-document.model';
+import {ActivatedRoute, Router} from '@angular/router';
+import {DataService} from '../../services/data.service';
 
 @Component({
-  selector: 'app-job-site-frame',
+  selector: 'app-identification-id-frame',
   imports: [
     FormsModule
   ],
-  templateUrl: './job-site-frame.component.html',
-  styleUrl: './job-site-frame.component.css'
+  templateUrl: './identification-id-frame.component.html',
+  styleUrl: './identification-id-frame.component.css'
 })
-export class JobSiteFrameComponent {
+export class IdentificationIdFrameComponent {
   tab_label : string = '';
   back_button_label: string = 'Zurück';
   forward_button_label: string = 'Weiter';
-  job_site_address_label: string = 'Adresse';
-  address_value: string = "";
-  city_label: string = 'Stadt';
-  city_value: string = "";
-  zip_code_label: string = 'ZIP Code';
-  zip_code_value: string = "";
-  country_label: string = 'Land';
-  country_value: string = "";
 
   iCmDocumentJsonData: ICmDocumentJson = new CmDocumentJson();
   dataService: DataService;
   id: string | null;
+
+  identification_id_value: string = "";
 
   constructor(private router: Router, private route: ActivatedRoute, dataService: DataService) {
     this.dataService = dataService;
@@ -37,24 +31,34 @@ export class JobSiteFrameComponent {
       this.iCmDocumentJsonData = data;
       console.log("Received data from /getCmDocumentById: " + JSON.stringify(this.iCmDocumentJsonData));
     });
+
+    this.makeid(10);
   }
 
-
-  async saveJobSiteData() {
-    this.iCmDocumentJsonData.address = this.address_value;
-    this.iCmDocumentJsonData.city = this.city_value;
-    this.iCmDocumentJsonData.zip = this.zip_code_value;
-    this.iCmDocumentJsonData.country = this.country_value;
+  async saveIdentificationIdData() {
+    this.iCmDocumentJsonData.document_id = this.identification_id_value;
 
     await firstValueFrom(this.dataService.updateCmDocument(this.iCmDocumentJsonData.id, JSON.stringify(this.iCmDocumentJsonData))).then((data: ICmDocumentJson) => {
       this.iCmDocumentJsonData = data;
       console.log("Received return data from /updateCmDocument: " + JSON.stringify(this.iCmDocumentJsonData));
     });
 
-    await this.router.navigate(['/identification-id-frame', this.id]);
+    await this.router.navigate(['/measurement-one-frame', this.id]);
   }
 
   returnOnePage() {
-    this.router.navigate(['/user-data-frame']);
+    this.router.navigate(['/job-site-frame', this.id]);
+  }
+
+  makeid(length: number) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!$%&?';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < length) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      counter += 1;
+    }
+    this.identification_id_value = result;
   }
 }

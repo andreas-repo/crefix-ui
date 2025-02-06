@@ -94,6 +94,6 @@ export class MeasurementOneFrameComponent {
   }
 
   returnOnePage() {
-    this.router.navigate(['/job-site-frame', this.id]);
+    this.router.navigate(['/identification-id-frame', this.id]);
   }
 }
