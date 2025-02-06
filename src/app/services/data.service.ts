@@ -2,14 +2,16 @@
 
 import { Injectable } from "@angular/core";
 import {HttpClient} from '@angular/common/http';
-import {catchError, Observable} from 'rxjs';
-import {CmDocument} from '../models/cm-document.model';
-import {Measurement} from '../models/measurement.model';
+import {Observable} from 'rxjs';
+import {ICmDocumentJson} from '../models/cm-document.model';
+import {IMeasurementJson} from '../models/measurement.model';
 
 export const DOCUMENT_ENDPOINT = '/createCmDocument';
 export const GET_DOCUMENT_ENDPOINT = '/getCmDocument';
 export const UPDATE_DOCUMENT_ENDPOINT = '/updateCmDocument';
 export const UPDATE_MEASUREMENT_ENDPOINT = '/updateMeasurementById';
+export const UPDATE_MEASUREMENT_ARCHIVED_FILE_ID_ENDPOINT = '/updateMeasurementArchivedFileId';
+export const GET_MEASUREMENT_BY_ID_ENDPOINT = '/getMeasurementById';
 
 @Injectable()
 export class DataService {
@@ -18,23 +20,27 @@ export class DataService {
   constructor(private http: HttpClient) {
   }
 
-  initializeDocument(): Observable<any> {
-    return this.http.post<CmDocument>(this.apiUrl + DOCUMENT_ENDPOINT, {});
+  initializeDocument(): Observable<ICmDocumentJson> {
+    return this.http.post<ICmDocumentJson>(this.apiUrl + DOCUMENT_ENDPOINT, {});
   }
 
-  getCmDocumentById(id: string | null): Observable<any> {
-    return this.http.get<CmDocument>(this.apiUrl + GET_DOCUMENT_ENDPOINT + '/' + id);
+  getCmDocumentById(id: string | null): Observable<ICmDocumentJson> {
+    return this.http.get<ICmDocumentJson>(this.apiUrl + GET_DOCUMENT_ENDPOINT + '/' + id);
   }
 
-  updateCmDocument(id: string, body: string): Observable<any> {
-    return this.http.post<CmDocument>(this.apiUrl + UPDATE_DOCUMENT_ENDPOINT + '/' + id, body, {headers: {'Content-Type': 'application/json'}});
+  updateCmDocument(id: string, body: string): Observable<ICmDocumentJson> {
+    return this.http.post<ICmDocumentJson>(this.apiUrl + UPDATE_DOCUMENT_ENDPOINT + '/' + id, body, {headers: {'Content-Type': 'application/json'}});
   }
 
-  updateMeasurementById(id: string, body: string): Observable<any> {
-    return this.http.post<Measurement>(this.apiUrl + UPDATE_MEASUREMENT_ENDPOINT + '/' + id, body, {headers: {'Content-Type': 'application/json'}});
+  updateMeasurementById(id: string, body: string): Observable<IMeasurementJson> {
+    return this.http.post<IMeasurementJson>(this.apiUrl + UPDATE_MEASUREMENT_ENDPOINT + '/' + id, body, {headers: {'Content-Type': 'application/json'}});
   }
 
-  getMeasurementById(id: string | null): Observable<any> {
-    return this.http.get<Measurement>(this.apiUrl + '/getMeasurementById/' + id);
+  getMeasurementById(id: string | undefined): Observable<IMeasurementJson> {
+    return this.http.get<IMeasurementJson>(this.apiUrl + GET_MEASUREMENT_BY_ID_ENDPOINT + '/' + id);
+  }
+
+  updateMeasurementPictureById(id: string | undefined, body: string): Observable<IMeasurementJson> {
+    return this.http.post<IMeasurementJson>(this.apiUrl + UPDATE_MEASUREMENT_ARCHIVED_FILE_ID_ENDPOINT + '/' + id, body, {headers: {'Content-Type': 'application/json'}});
   }
 }

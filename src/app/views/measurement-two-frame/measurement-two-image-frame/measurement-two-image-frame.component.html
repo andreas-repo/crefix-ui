@@ -1,0 +1,22 @@
+<div>
+  <div id="camera-content">
+    <app-camera (capturedImageBase64)="saveCapturedBase64Image($event)"></app-camera>
+  </div>
+
+  <div>
+    <div class="buttons">
+
+      <div class="button-left">
+        <div class="back-button" (click)="returnOnePage()">
+          <span class="back-text-button">{{ back_button_label }}</span>
+        </div>
+      </div>
+
+      <div class="button-right">
+        <div class="forward-button" (click)="saveCapturedImage()">
+          <span class="forward-text-button">{{ forward_button_label }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

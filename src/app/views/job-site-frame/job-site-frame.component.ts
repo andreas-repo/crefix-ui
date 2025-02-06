@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {CmDocument} from '../../models/cm-document.model';
-import {PassDataService} from '../../services/pass-data.service';
+import {CmDocumentJson, ICmDocumentJson} from '../../models/cm-document.model';
 import {DataService} from '../../services/data.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {firstValueFrom} from 'rxjs';
@@ -27,30 +26,32 @@ export class JobSiteFrameComponent {
   country_label: string = 'Land';
   country_value: string = "";
 
-  cmDocumentData: CmDocument = new CmDocument();
+  iCmDocumentJsonData: ICmDocumentJson = new CmDocumentJson();
   dataService: DataService;
   id: string | null;
 
   constructor(private router: Router, private route: ActivatedRoute, dataService: DataService) {
     this.dataService = dataService;
     this.id = this.route.snapshot.paramMap.get('id');
-    this.dataService.getCmDocumentById(this.id).subscribe((data: CmDocument) => {
-      this.cmDocumentData = data;
-      console.log("Received data from /getCmDocumentById: " + JSON.stringify(this.cmDocumentData));
+    this.dataService.getCmDocumentById(this.id).subscribe((data: ICmDocumentJson) => {
+      this.iCmDocumentJsonData = data;
+      console.log("Received data from /getCmDocumentById: " + JSON.stringify(this.iCmDocumentJsonData));
     });
   }
 
 
   async saveJobSiteData() {
-    this.cmDocumentData.address = this.address_value;
-    this.cmDocumentData.city = this.city_value;
-    this.cmDocumentData.zip = this.zip_code_value;
-    this.cmDocumentData.country = this.country_value;
+    this.iCmDocumentJsonData.address = this.address_value;
+    this.iCmDocumentJsonData.city = this.city_value;
+    this.iCmDocumentJsonData.zip = this.zip_code_value;
+    this.iCmDocumentJsonData.country = this.country_value;
 
-    await firstValueFrom(this.dataService.updateCmDocument(this.cmDocumentData.id.toString(), JSON.stringify(this.cmDocumentData)));
-    console.log("Saved job site data: " + JSON.stringify(this.cmDocumentData));
+    await firstValueFrom(this.dataService.updateCmDocument(this.iCmDocumentJsonData.id, JSON.stringify(this.iCmDocumentJsonData))).then((data: ICmDocumentJson) => {
+      this.iCmDocumentJsonData = data;
+      console.log("Received return data from /updateCmDocument: " + JSON.stringify(this.iCmDocumentJsonData));
+    });
 
-    await this.router.navigate(['/measurement-one-frame', this.cmDocumentData.id]);
+    await this.router.navigate(['/measurement-one-frame', this.id]);
   }
 
   returnOnePage() {

@@ -16,7 +16,7 @@ import {NgIf} from '@angular/common';
 export class CameraComponent {
   permissionStatus: string = "";
   camData: any = null;
-  capturedImage: any = '';
+  capturedImage: string = '';
   @Output() capturedImageBase64: any = new EventEmitter<string>();
   trigger: Subject<void> = new Subject();
 
@@ -43,9 +43,11 @@ export class CameraComponent {
     console.log("event", event);
     //this.capturedImage = event.imageAsBase64;
     this.capturedImage = event.imageAsDataUrl;
-    this.getBase64ImageFromUrl(this.capturedImage).then((data) => {
+    console.log("Captured image in child before sent to parent: " + this.capturedImage);
+    /*this.getBase64ImageFromUrl(this.capturedImage).then((data) => {
       this.capturedImageBase64.emit(data)
-    });
+    });*/
+    this.capturedImageBase64.emit(this.capturedImage);
   }
 
   async getBase64ImageFromUrl(capturedImage: string) {

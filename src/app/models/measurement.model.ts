@@ -1,8 +1,25 @@
 import {JsonObject, JsonProperty} from 'json2typescript';
 import {Deserializable} from './deserializable.model';
 
+export interface IMeasurementJson {
+  id?: string;
+  floor?: string;
+  layedAt?: string;
+  dateOfMeasurement?: string;
+  initialWeight?: string;
+  pressureGaugeDisplay?: string;
+  cmValue?: string;
+  temperature?: string;
+  humidity?: string;
+  surfaceTemperature?: string;
+  installationThickness?: string;
+  underfloorHeating?: string;
+  readyAccordingOfTechnicalDatasheet?: string;
+  archivedFileId?: string;
+}
+
 @JsonObject('Measurement')
-export class Measurement implements Deserializable {
+export class MeasurementJson implements Deserializable, IMeasurementJson {
 
   @JsonProperty('id', String)
   id?: string = '';
@@ -30,8 +47,8 @@ export class Measurement implements Deserializable {
   underfloorHeating?: string = '';
   @JsonProperty('readyAccordingOfTechnicalDatasheet', String)
   readyAccordingOfTechnicalDatasheet?: string = '';
-  @JsonProperty('pictureBase64', String)
-  pictureBase64?: string = '';
+  @JsonProperty('archivedFileId', String)
+  archivedFileId?: string = '';
 
   deserialize(input: any) : this {
     Object.assign(this, input);

@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {CmDocument} from '../../models/cm-document.model';
 import {ActivatedRoute, Router} from '@angular/router';
-import {PassDataService} from '../../services/pass-data.service';
-import {Measurement} from '../../models/measurement.model';
 import {DataService} from '../../services/data.service';
 import {firstValueFrom} from 'rxjs';
+import {CmDocumentJson, ICmDocumentJson} from '../../models/cm-document.model';
+import {IMeasurementJson, MeasurementJson} from '../../models/measurement.model';
 
 @Component({
   selector: 'app-measurement-four-frame',
@@ -45,41 +44,53 @@ export class MeasurementFourFrameComponent {
   ready_according_of_technical_datasheet_label: string = 'Belegreif lt. technischem Datenblatt Crefix';
   ready_according_of_technical_datasheet_value: string = "";
 
-  cmDocumentData: CmDocument = new CmDocument();
+  iCmDocumentJsonData: CmDocumentJson = new CmDocumentJson();
+  iMeasurementJsonData: IMeasurementJson = new MeasurementJson();
   dataService: DataService;
-  id: string | null;
-
+  id: string = '';
+  measurement_id: string = '';
 
   constructor(private route: ActivatedRoute, private router: Router, dataService: DataService) {
     this.dataService = dataService;
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.dataService.getCmDocumentById(this.id).subscribe((data: CmDocument) => {
-      this.cmDocumentData = data;
-      console.log("Received data from /getCmDocumentById: " + JSON.stringify(this.cmDocumentData));
+    this.id = <string>this.route.snapshot.paramMap.get('id');
+
+    firstValueFrom(this.dataService.getCmDocumentById(this.id)).then((data: ICmDocumentJson) => {
+      this.iCmDocumentJsonData = <CmDocumentJson> data;
+      this.measurement_id = (<CmDocumentJson> data).measurementFourId;
+      console.log("Received data from /getCmDocumentById: " + JSON.stringify(this.iCmDocumentJsonData));
     });
   }
 
   async saveMeasurementFourData() {
-    this.cmDocumentData.measurements[3].floor = this.floor_value;
-    this.cmDocumentData.measurements[3].layedAt = this.layed_at_value;
-    this.cmDocumentData.measurements[3].dateOfMeasurement = this.date_of_measurement_value;
-    this.cmDocumentData.measurements[3].initialWeight = this.initial_weight_value;
-    this.cmDocumentData.measurements[3].pressureGaugeDisplay = this.pressure_gauge_display_value;
-    this.cmDocumentData.measurements[3].cmValue = this.cm_value;
-    this.cmDocumentData.measurements[3].temperature = this.temperature_value;
-    this.cmDocumentData.measurements[3].humidity = this.humidity_value;
-    this.cmDocumentData.measurements[3].surfaceTemperature = this.surface_temperature_value;
-    this.cmDocumentData.measurements[3].installationThickness = this.installation_thickness_value;
-    this.cmDocumentData.measurements[3].underfloorHeating = this.underfloor_heating_value;
-    this.cmDocumentData.measurements[3].readyAccordingOfTechnicalDatasheet = this.ready_according_of_technical_datasheet_value;
+    console.log("Parsed request to CmDocument: " + <CmDocumentJson> this.iCmDocumentJsonData);
 
-    await firstValueFrom(this.dataService.updateCmDocument(this.cmDocumentData.id.toString(), JSON.stringify(this.cmDocumentData)));
+    console.log("Measurement ID: " + this.measurement_id);
+    firstValueFrom(this.dataService.getMeasurementById(this.measurement_id)).then((data: IMeasurementJson) => {
+      this.iMeasurementJsonData = <IMeasurementJson>data;
+      console.log("Received data from /getMeasurementById for MEASUREMENT FOUR: " + JSON.stringify(data));
+    });
 
+    this.iMeasurementJsonData.floor = this.floor_value;
+    this.iMeasurementJsonData.layedAt = this.layed_at_value;
+    this.iMeasurementJsonData.dateOfMeasurement = this.date_of_measurement_value;
+    this.iMeasurementJsonData.initialWeight = this.initial_weight_value;
+    this.iMeasurementJsonData.pressureGaugeDisplay = this.pressure_gauge_display_value;
+    this.iMeasurementJsonData.cmValue = this.cm_value;
+    this.iMeasurementJsonData.temperature = this.temperature_value;
+    this.iMeasurementJsonData.humidity = this.humidity_value;
+    this.iMeasurementJsonData.surfaceTemperature = this.surface_temperature_value;
+    this.iMeasurementJsonData.installationThickness = this.installation_thickness_value;
+    this.iMeasurementJsonData.underfloorHeating = this.underfloor_heating_value;
+    this.iMeasurementJsonData.readyAccordingOfTechnicalDatasheet = this.ready_according_of_technical_datasheet_value;
 
-    await this.router.navigate(['/take-image-frame', this.cmDocumentData.measurements[0].id]);
+    this.dataService.updateMeasurementById(this.measurement_id, JSON.stringify(this.iMeasurementJsonData)).subscribe((measurement: IMeasurementJson) => {
+      console.log("Received result data from /updateMeasurementById: " + JSON.stringify(measurement));
+    });
+
+    await this.router.navigate(['/measurement-four-image-frame', this.id]);
   }
 
   returnOnePage() {
-    this.router.navigate(['/measurement-three-frame', this.id]);
+    this.router.navigate(['/measurement-three-image-frame', this.id]);
   }
 }

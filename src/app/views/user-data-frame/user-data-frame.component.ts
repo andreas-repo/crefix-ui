@@ -1,10 +1,9 @@
-import {Component, Input} from '@angular/core';
-import {NavigationExtras, Router} from '@angular/router';
+import {Component} from '@angular/core';
+import {Router} from '@angular/router';
 import {DataService} from '../../services/data.service';
-import {CmDocument} from '../../models/cm-document.model';
 import {FormsModule} from '@angular/forms';
-import {PassDataService} from '../../services/pass-data.service';
 import {firstValueFrom} from 'rxjs';
+import {CmDocumentJson, ICmDocumentJson} from '../../models/cm-document.model';
 
 @Component({
   selector: 'app-user-data-frame',
@@ -27,27 +26,27 @@ export class UserDataFrameComponent {
   email_label: string = 'Email';
   email_value: string = '';
 
-  cmDocumentData: CmDocument = new CmDocument();
+  iCmDocumentJsonData: ICmDocumentJson = new CmDocumentJson();
   dataService: DataService;
 
   constructor(private router: Router, dataService: DataService) {
       this.dataService = dataService;
-      this.dataService.initializeDocument().subscribe((data: CmDocument) => {
-      this.cmDocumentData = data;
-      console.log(this.cmDocumentData);
+      this.dataService.initializeDocument().subscribe((data: ICmDocumentJson) => {
+      this.iCmDocumentJsonData = data;
+      console.log(this.iCmDocumentJsonData);
 
     });
   }
 
   async saveUserData() {
-    this.cmDocumentData.firstname = this.first_name_value;
-    this.cmDocumentData.lastname = this.last_name_value;
-    this.cmDocumentData.phone = this.phone_value;
-    this.cmDocumentData.email = this.email_value;
+    this.iCmDocumentJsonData.firstname = this.first_name_value;
+    this.iCmDocumentJsonData.lastname = this.last_name_value;
+    this.iCmDocumentJsonData.phone = this.phone_value;
+    this.iCmDocumentJsonData.email = this.email_value;
 
-    await firstValueFrom(this.dataService.updateCmDocument(this.cmDocumentData.id.toString(), JSON.stringify(this.cmDocumentData)));
-    console.log("Saved user data: " + JSON.stringify(this.cmDocumentData));
+    await firstValueFrom(this.dataService.updateCmDocument(this.iCmDocumentJsonData.id, JSON.stringify(this.iCmDocumentJsonData)));
+    console.log("Saved user data: " + JSON.stringify(this.iCmDocumentJsonData));
 
-    await this.router.navigate(['/job-site-frame', this.cmDocumentData.id]);
+    await this.router.navigate(['/job-site-frame', this.iCmDocumentJsonData.id]);
   }
 }

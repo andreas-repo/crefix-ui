@@ -1,0 +1,51 @@
+.back-button {
+  padding: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 8px;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 8px;
+  border-color: #2c2c2c;
+  border-style: solid;
+  border-width: 1px;
+  background: #2c2c2c;
+}
+
+.back-text-button {
+  color: #f5f5f5;
+  font-weight: 400;
+  text-align: left;
+  text-wrap: nowrap;
+}
+
+.forward-button {
+  padding: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 8px;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 8px;
+  border-color: #06ae06;
+  border-style: solid;
+  border-width: 1px;
+  background: #37a937;
+}
+.forward-text-button {
+  color: #ffffff;
+  font-weight: 400;
+  text-align: left;
+  text-wrap: nowrap;
+}
+
+#camera-content {
+  width: 100%;
+  height: 100%;
+}
