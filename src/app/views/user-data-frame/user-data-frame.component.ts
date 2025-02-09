@@ -28,14 +28,37 @@ export class UserDataFrameComponent {
 
   iCmDocumentJsonData: ICmDocumentJson = new CmDocumentJson();
   dataService: DataService;
+  public lat: string = '';
+  public lng: string = '';
 
   constructor(private router: Router, dataService: DataService) {
       this.dataService = dataService;
       this.dataService.initializeDocument().subscribe((data: ICmDocumentJson) => {
       this.iCmDocumentJsonData = data;
       console.log(this.iCmDocumentJsonData);
-
     });
+  }
+
+  public ngOnInit(): void {
+    this.getLocation();
+  }
+
+  getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position: any) => {
+          if (position) {
+            console.log("Latitude: " + position.coords.latitude + " / " +
+              "Longitude: " + position.coords.longitude);
+            this.lat = position.coords.latitude;
+            this.lng = position.coords.longitude;
+            console.log("Latitude: " + this.lat);
+            console.log("Longitude: " + this.lng);
+          }
+        },
+        (error: any) => console.log(error));
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
   }
 
   async saveUserData() {
