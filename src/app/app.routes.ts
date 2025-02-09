@@ -20,6 +20,7 @@ import {
 } from './views/measurement-four-frame/measurement-four-image-frame/measurement-four-image-frame.component';
 import {IdentificationIdFrameComponent} from './views/identification-id-frame/identification-id-frame.component';
 import {ScreedDetailsFrameComponent} from './views/screed-details-frame/screed-details-frame.component';
+import {FinishDocumentFrameComponent} from './views/finish-document-frame/finish-document-frame.component';
 
 export const routes: Routes = [
   {path: 'user-data-frame', component: UserDataFrameComponent},
@@ -34,6 +35,7 @@ export const routes: Routes = [
   {path: 'measurement-four-frame/:id', component: MeasurementFourFrameComponent},
   {path: 'measurement-four-image-frame/:id', component: MeasurementFourImageFrameComponent},
   {path: 'screed-details-frame/:id', component: ScreedDetailsFrameComponent},
+  {path: 'finish-document-frame/:id', component: FinishDocumentFrameComponent},
   {path: '', redirectTo: '/user-data-frame', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent},
 ];
