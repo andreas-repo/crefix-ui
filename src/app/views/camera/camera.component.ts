@@ -41,30 +41,9 @@ export class CameraComponent {
 
   capture(event: WebcamImage) {
     console.log("event", event);
-    //this.capturedImage = event.imageAsBase64;
     this.capturedImage = event.imageAsDataUrl;
     console.log("Captured image in child before sent to parent: " + this.capturedImage);
-    /*this.getBase64ImageFromUrl(this.capturedImage).then((data) => {
-      this.capturedImageBase64.emit(data)
-    });*/
     this.capturedImageBase64.emit(this.capturedImage);
-  }
-
-  async getBase64ImageFromUrl(capturedImage: string) {
-    var res = await fetch(capturedImage);
-    var blob = await res.blob();
-
-    return new Promise((resolve, reject) => {
-      var reader  = new FileReader();
-      reader.addEventListener("load", function () {
-        resolve(reader.result);
-      }, false);
-
-      reader.onerror = () => {
-        return reject(this);
-      };
-      reader.readAsDataURL(blob);
-    })
   }
 
   captureImage() {
