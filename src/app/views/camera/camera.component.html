@@ -1,11 +1,21 @@
-<div *ngIf="camData">
-  <div>
-    <webcam [trigger]="$trigger" (imageCapture)="capture($event)"></webcam>
+<div id="content">
+  <div id="camera-content" *ngIf="camData">
+    <div id="camera">
+      <webcam [trigger]="$trigger" (imageCapture)="capture($event)"></webcam>
+    </div>
+
+    <div id="image">
+      <div *ngIf="capturedImage">
+        <img [src]="capturedImage"  alt="Captured image"/>
+      </div>
+    </div>
+  </div>
+
+  <div id="take-image">
     <button id="button" (click)="captureImage()"></button>
   </div>
 </div>
 
-<div *ngIf="capturedImage">
-  <img [src]="capturedImage"  alt="Captured image"/>
-</div>
+
+
 

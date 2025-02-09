@@ -19,6 +19,11 @@ export interface ICmDocumentJson {
   measurementTwoId?: string;
   measurementThreeId?: string;
   measurementFourId?: string;
+  crefixType?: string;
+  dosage?: string;
+  productType?: string;
+  productMixRation?: string;
+  userNote?: string;
 }
 
 @JsonObject('CmDocument')
@@ -40,6 +45,14 @@ export class CmDocumentJson implements Deserializable, ICmDocumentJson {
   @JsonProperty('measurement_two_id', String) private _measurementTwoId: string = '';
   @JsonProperty('measurement_three_id', String) private _measurementThreeId: string = '';
   @JsonProperty('measurement_four_id', String) private _measurementFourId: string = '';
+
+  @JsonProperty('crefix_type', String) private _crefixType: string = '';
+  @JsonProperty('dosage', String) private _dosage: string = '';
+  @JsonProperty('product_type', String) private _product: string = '';
+  @JsonProperty('product_mix_ration', String) private _productMixRatio: string = '';
+  @JsonProperty('user_note', String) private _userNote: string = '';
+
+
 
   deserialize(input: any) : this {
     Object.assign(this, input);
@@ -169,6 +182,46 @@ export class CmDocumentJson implements Deserializable, ICmDocumentJson {
 
   set measurementFourId(value: string) {
     this._measurementFourId = value;
+  }
+
+  get crefixType(): string {
+    return this._crefixType;
+  }
+
+  set crefixType(value: string) {
+    this._crefixType = value;
+  }
+
+  get dosage(): string {
+    return this._dosage;
+  }
+
+  set dosage(value: string) {
+    this._dosage = value;
+  }
+
+  get product(): string {
+    return this._product;
+  }
+
+  set product(value: string) {
+    this._product = value;
+  }
+
+  get productMixRatio(): string {
+    return this._productMixRatio;
+  }
+
+  set productMixRatio(value: string) {
+    this._productMixRatio = value;
+  }
+
+  get userNote(): string {
+    return this._userNote;
+  }
+
+  set userNote(value: string) {
+    this._userNote = value;
   }
 }
 

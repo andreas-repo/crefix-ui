@@ -104,6 +104,7 @@
   border-width: 1px;
   background: #37a937;
 }
+
 .forward-text-button {
   color: #ffffff;
   font-weight: 400;
@@ -128,12 +129,10 @@
   height: 422px;
   width: 100%;
 }
+
 .input-field {
   width: 100%;
   border: white;
-}
-
-.input-field {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -141,7 +140,6 @@
   align-items: flex-start;
   gap: 8px;
   box-sizing: inherit;
-  width: 100%;
   align-self: center;
 }
 .text-label {

@@ -1,0 +1,60 @@
+<div class="screed-details-frame">
+  <div class="group">
+    <div class="tab">
+      <span class="tab-text-label">{{ tab_label }}</span>
+    </div>
+
+    <div class="form-contact">
+      <div class="input-field">
+        <span class="text-label">{{ crefix_type_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="Crefix Produkt Typ" [(ngModel)]="crefix_type_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ dosage_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="Dosierung in ml" [(ngModel)]="dosage_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ product_type_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="Verwendete Zement- und Bindemittelsorte" [(ngModel)]="product_type_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ product_mix_ration_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="Dosierng in kg/Mischung" [(ngModel)]="product_mix_ration_value" [contentEditable]="true" >
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ user_note_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="Bitte hier Details und Bemerkungen festhalten..." [(ngModel)]="user_note_value" [contentEditable]="true" >
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons">
+
+      <div class="button-left">
+        <div class="back-button">
+          <span class="back-text-button">{{ back_button_label }}</span>
+        </div>
+      </div>
+
+      <div class="button-right">
+        <div class="forward-button" (click)="saveScreedDetails()">
+          <span class="forward-text-button">{{ forward_button_label }}</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

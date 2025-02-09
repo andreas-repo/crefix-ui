@@ -1,4 +1,41 @@
+
+#content {
+  height: 70%;
+}
+
+
 #button {
-  width: 10%;
-  height: 30%;
+  width: 100%;
+  height: 100%;
+}
+
+#camera-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  height: 100%;
+  width: 100%;
+  flex-direction: row;
+}
+
+#camera {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: inline;
+}
+
+#camera {
+  float: left;
+}
+
+#image {
+  float: right;
+}
+
+#take-image {
+  align-self: center;
+  width: 100%;
+  height: 100%;
 }

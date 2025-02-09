@@ -1,10 +1,10 @@
-.job-site-frame {
-  position: initial;
+.screed-details-frame {
+  position: page;
   box-sizing: border-box;
   overflow: auto;
   background: #ffffff;
   width: initial ;
-  height: fit-content ;
+  height: initial ;
 }
 
 .group {
@@ -18,7 +18,7 @@
 }
 
 .form-contact {
-  height: fit-content;
+  height: 50%;
 }
 
 .buttons {
@@ -104,6 +104,7 @@
   border-width: 1px;
   background: #37a937;
 }
+
 .forward-text-button {
   color: #ffffff;
   font-weight: 400;

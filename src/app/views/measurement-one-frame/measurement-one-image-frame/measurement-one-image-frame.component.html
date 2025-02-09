@@ -1,21 +1,19 @@
-<div>
-  <div id="camera-content">
+<div id="measurement-one-frame">
+  <div id="measurement-one-frame-camera-content">
     <app-camera (capturedImageBase64)="saveCapturedBase64Image($event)"></app-camera>
   </div>
 
-  <div>
-    <div class="buttons">
 
-      <div class="button-left">
-        <div class="back-button" (click)="returnOnePage()">
-          <span class="back-text-button">{{ back_button_label }}</span>
-        </div>
+  <div id="buttons">
+    <div class="button-left">
+      <div class="back-button" (click)="returnOnePage()">
+        <span class="back-text-button">{{ back_button_label }}</span>
       </div>
+    </div>
 
-      <div class="button-right">
-        <div class="forward-button" (click)="saveCapturedImage()">
-          <span class="forward-text-button">{{ forward_button_label }}</span>
-        </div>
+    <div class="button-right">
+      <div class="forward-button" (click)="saveCapturedImage()">
+        <span class="forward-text-button">{{ forward_button_label }}</span>
       </div>
     </div>
   </div>

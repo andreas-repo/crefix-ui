@@ -29,7 +29,7 @@ export class CameraComponent {
   }
 
   checkPermissions() {
-    navigator.mediaDevices.getUserMedia({video: {width:500,height:500}}).then((response) => {
+    navigator.mediaDevices.getUserMedia({video: {width:400,height:400}}).then((response) => {
       this.permissionStatus = "granted";
       this.camData = response;
       console.log(this.camData);

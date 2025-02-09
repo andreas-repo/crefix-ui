@@ -1,3 +1,19 @@
+#measurement-one-frame {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#measurement-one-frame-camera-content {
+  height: 80%;
+}
+
+#buttons {
+  height: 20%;
+}
+
+
 .back-button {
   padding: 12px;
   display: flex;

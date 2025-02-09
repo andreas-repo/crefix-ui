@@ -60,7 +60,7 @@ export class MeasurementFourImageFrameComponent {
       console.log("Received data from /updateMeasurementById: " + JSON.stringify(data));
     });
 
-    await this.router.navigate(['/finish-frame', this.id]);
+    await this.router.navigate(['/screed-details-frame', this.id]);
   }
 
   archiveImageFile(capturedImageBase64: string): string {
