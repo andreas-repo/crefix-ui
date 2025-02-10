@@ -1,1 +1,26 @@
-<p>finish-document-frame works!</p>
+<div class="finish-document-frame">
+  <div class="group">
+    <div class="tab">
+      <span class="tab-text-label">{{ tab_label }}</span>
+    </div>
+
+    <p>PLACEHOLDER PDF</p>
+
+    <div class="buttons">
+
+      <div class="button-left">
+        <div class="back-button" (click)="returnOnePage()">
+          <span class="back-text-button">{{ back_button_label }}</span>
+        </div>
+      </div>
+
+      <div class="button-right">
+        <div class="forward-button" (click)="finishDocument()">
+          <span class="forward-text-button">{{ forward_button_label }}</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
