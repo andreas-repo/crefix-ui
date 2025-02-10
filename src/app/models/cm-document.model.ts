@@ -5,7 +5,7 @@ import {input} from '@angular/core';
 
 export interface ICmDocumentJson {
   id: string;
-  document_id: string;
+  documentId: string;
   firstname?: string;
   lastname?: string;
   phone?: string;
@@ -29,7 +29,7 @@ export interface ICmDocumentJson {
 @JsonObject('CmDocument')
 export class CmDocumentJson implements Deserializable, ICmDocumentJson {
   @JsonProperty('id', String) private _id: string = '';
-  @JsonProperty('documentId', String) private _document_id: string = '';
+  @JsonProperty('documentId', String) private _documentId: string = '';
   @JsonProperty('firstname', String) private _firstname: string = '';
   @JsonProperty('lastname', String) private _lastname: string = '';
   @JsonProperty('phone', String) private _phone: string = '';
@@ -72,12 +72,12 @@ export class CmDocumentJson implements Deserializable, ICmDocumentJson {
     this._id = value;
   }
 
-  get document_id(): string {
-    return this._document_id;
+  get documentId(): string {
+    return this._documentId;
   }
 
-  set document_id(value: string) {
-    this._document_id = value;
+  set documentId(value: string) {
+    this._documentId = value;
   }
 
   get firstname(): string {

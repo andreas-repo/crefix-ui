@@ -36,7 +36,7 @@ export class IdentificationIdFrameComponent {
   }
 
   async saveIdentificationIdData() {
-    this.iCmDocumentJsonData.document_id = this.identification_id_value;
+    this.iCmDocumentJsonData.documentId = this.identification_id_value;
 
     await firstValueFrom(this.dataService.updateCmDocument(this.iCmDocumentJsonData.id, JSON.stringify(this.iCmDocumentJsonData))).then((data: ICmDocumentJson) => {
       this.iCmDocumentJsonData = data;
