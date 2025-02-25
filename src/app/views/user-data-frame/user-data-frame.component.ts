@@ -28,8 +28,8 @@ export class UserDataFrameComponent {
 
   iCmDocumentJsonData: ICmDocumentJson = new CmDocumentJson();
   dataService: DataService;
-  public lat: string = '';
-  public lng: string = '';
+  lat: string = '';
+  lng: string = '';
 
   constructor(private router: Router, dataService: DataService) {
       this.dataService = dataService;
@@ -66,6 +66,9 @@ export class UserDataFrameComponent {
     this.iCmDocumentJsonData.lastname = this.last_name_value;
     this.iCmDocumentJsonData.phone = this.phone_value;
     this.iCmDocumentJsonData.email = this.email_value;
+
+    this.iCmDocumentJsonData.locationLatitude = this.lat;
+    this.iCmDocumentJsonData.locationLongitude = this.lng;
 
     await firstValueFrom(this.dataService.updateCmDocument(this.iCmDocumentJsonData.id, JSON.stringify(this.iCmDocumentJsonData)));
     console.log("Saved user data: " + JSON.stringify(this.iCmDocumentJsonData));

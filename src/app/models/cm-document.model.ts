@@ -6,6 +6,8 @@ import {input} from '@angular/core';
 export interface ICmDocumentJson {
   id: string;
   documentId: string;
+  locationLongitude: string;
+  locationLatitude: string;
   firstname?: string;
   lastname?: string;
   phone?: string;
@@ -30,6 +32,8 @@ export interface ICmDocumentJson {
 export class CmDocumentJson implements Deserializable, ICmDocumentJson {
   @JsonProperty('id', String) private _id: string = '';
   @JsonProperty('documentId', String) private _documentId: string = '';
+  @JsonProperty('locationLongitude', String) private _locationLongitude: string = '';
+  @JsonProperty('locationLatitude', String) private _locationLatitude: string = '';
   @JsonProperty('firstname', String) private _firstname: string = '';
   @JsonProperty('lastname', String) private _lastname: string = '';
   @JsonProperty('phone', String) private _phone: string = '';
@@ -78,6 +82,22 @@ export class CmDocumentJson implements Deserializable, ICmDocumentJson {
 
   set documentId(value: string) {
     this._documentId = value;
+  }
+
+  get locationLongitude(): string {
+    return this._locationLongitude;
+  }
+
+  set locationLongitude(value: string) {
+    this._locationLongitude = value;
+  }
+
+  get locationLatitude(): string {
+    return this._locationLatitude;
+  }
+
+  set locationLatitude(value: string) {
+    this._locationLatitude = value;
   }
 
   get firstname(): string {
