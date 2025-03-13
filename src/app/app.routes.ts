@@ -21,8 +21,13 @@ import {
 import {IdentificationIdFrameComponent} from './views/identification-id-frame/identification-id-frame.component';
 import {ScreedDetailsFrameComponent} from './views/screed-details-frame/screed-details-frame.component';
 import {FinishDocumentFrameComponent} from './views/finish-document-frame/finish-document-frame.component';
+import {
+  DcFormExecutingCompanyFrameComponent
+} from './views/dc-form-executing-company-frame/dc-form-executing-company-frame.component';
 
 export const routes: Routes = [
+  {path: 'dc-form-executing-company-frame', component: DcFormExecutingCompanyFrameComponent},
+
   {path: 'user-data-frame', component: UserDataFrameComponent},
   {path: 'job-site-frame/:id', component: JobSiteFrameComponent},
   {path: 'identification-id-frame/:id', component: IdentificationIdFrameComponent},
