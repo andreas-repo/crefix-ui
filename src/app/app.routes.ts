@@ -24,10 +24,15 @@ import {FinishDocumentFrameComponent} from './views/finish-document-frame/finish
 import {
   DcFormExecutingCompanyFrameComponent
 } from './views/dc-form-executing-company-frame/dc-form-executing-company-frame.component';
+import {
+  DcFormTechnicalDataFrameComponent
+} from './views/dc-form-technical-data-frame/dc-form-technical-data-frame.component';
 
 export const routes: Routes = [
+  //CmDosageConfirmation
   {path: 'dc-form-executing-company-frame', component: DcFormExecutingCompanyFrameComponent},
-
+  {path: 'dc-form-technical-data-frame/:id', component: DcFormTechnicalDataFrameComponent},
+  //CmDocument
   {path: 'user-data-frame', component: UserDataFrameComponent},
   {path: 'job-site-frame/:id', component: JobSiteFrameComponent},
   {path: 'identification-id-frame/:id', component: IdentificationIdFrameComponent},

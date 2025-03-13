@@ -1,1 +1,88 @@
-<p>dc-form-executing-company-frame works!</p>
+<div class="executing-company-frame">
+  <div class="group">
+    <div class="tab">
+      <span class="tab-text-label">{{ tab_label }}</span>
+    </div>
+
+    <div class="form-contact">
+      <div class="input-field">
+        <span class="text-label">{{ screed_company_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="Bitte Baufirma hier eintragen..." [(ngModel)]="screed_company_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ job_site_address_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="Straße der Baustelle hier eintragen..." [(ngModel)]="job_site_address_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ job_site_city_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="Stadt der Baustelle hier eintragen..." [(ngModel)]="job_site_city_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ job_site_zip_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="Ort eintragen..." [(ngModel)]="job_site_zip_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ job_site_country_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="Land eintragen..." [(ngModel)]="job_site_country_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ contact_person_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="Kontaktperson eintragen..." [(ngModel)]="contact_person_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ contact_person_phone_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="Kontaktperson eintragen..." [(ngModel)]="contact_person_phone_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ contact_person_email_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="Kontaktperson eintragen..." [(ngModel)]="contact_person_email_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ date_of_measurement_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="Datum und Uhrzeit für Messung sofern bekannt..." [(ngModel)]="date_of_measurement_value" [contentEditable]="true" >
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons">
+
+      <div class="button-left">
+        <div class="back-button">
+          <span class="back-text-button">{{ back_button_label }}</span>
+        </div>
+      </div>
+
+      <div class="button-right">
+        <div class="forward-button" (click)="saveExecutingCompanyData()">
+          <span class="forward-text-button">{{ forward_button_label }}</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

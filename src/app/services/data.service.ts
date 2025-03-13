@@ -43,4 +43,12 @@ export class DataService {
   updateMeasurementPictureById(id: string | undefined, body: string): Observable<IMeasurementJson> {
     return this.http.post<IMeasurementJson>(this.apiUrl + UPDATE_MEASUREMENT_ARCHIVED_FILE_ID_ENDPOINT + '/' + id, body, {headers: {'Content-Type': 'application/json'}});
   }
+
+  initializeDcForm(): Observable<any> {
+    return this.http.post<any>(this.apiUrl + '/createCmDosageConfirmation', {});
+  }
+
+  updateDcForm(id: string, body: string): Observable<any> {
+    return this.http.post<any>(this.apiUrl + '/updateCmDosageConfirmation/' + id, body, {headers: {'Content-Type': 'application/json'}});
+  }
 }
