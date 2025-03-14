@@ -12,6 +12,9 @@ export const UPDATE_DOCUMENT_ENDPOINT = '/updateCmDocument';
 export const UPDATE_MEASUREMENT_ENDPOINT = '/updateMeasurementById';
 export const UPDATE_MEASUREMENT_ARCHIVED_FILE_ID_ENDPOINT = '/updateMeasurementArchivedFileId';
 export const GET_MEASUREMENT_BY_ID_ENDPOINT = '/getMeasurementById';
+export const CREATE_CM_DOSAGE_CONFIRMATION = '/createCmDosageConfirmation';
+export const GET_CM_DOSAGE_CONFIRMATION = '/getCmDosageConfirmation/';
+export const UPDATE_CM_DOSAGE_CONFIRMATION = '/updateCmDosageConfirmation/';
 
 @Injectable()
 export class DataService {
@@ -45,10 +48,14 @@ export class DataService {
   }
 
   initializeDcForm(): Observable<any> {
-    return this.http.post<any>(this.apiUrl + '/createCmDosageConfirmation', {});
+    return this.http.post<any>(this.apiUrl + CREATE_CM_DOSAGE_CONFIRMATION, {});
   }
 
   updateDcForm(id: string, body: string): Observable<any> {
-    return this.http.post<any>(this.apiUrl + '/updateCmDosageConfirmation/' + id, body, {headers: {'Content-Type': 'application/json'}});
+    return this.http.post<any>(this.apiUrl + UPDATE_CM_DOSAGE_CONFIRMATION + id, body, {headers: {'Content-Type': 'application/json'}});
+  }
+
+  getDcFormById(id: string | null): Observable<any> {
+    return this.http.get<any>(this.apiUrl + GET_CM_DOSAGE_CONFIRMATION + id);
   }
 }

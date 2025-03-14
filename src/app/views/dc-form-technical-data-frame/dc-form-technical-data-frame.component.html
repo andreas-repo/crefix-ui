@@ -1,1 +1,89 @@
-<p>dc-form-technical-data-frame works!</p>
+<div class="technical-data-frame">
+  <div class="group">
+    <div class="tab">
+      <span class="tab-text-label">{{ tab_label }}</span>
+    </div>
+
+    <div class="form-contact">
+      <div class="input-field">
+        <span class="text-label">{{ screed_construction_from }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="Estrichbau von..." [(ngModel)]="screed_construction_from_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ screed_construction_until }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="Estrichbau von..." [(ngModel)]="screed_construction_until_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ screed_area_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="Bitte Estrichfläche angeben..." [(ngModel)]="screed_area_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ screed_strength_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="Bitte Estrichstärke angeben..." [(ngModel)]="screed_strength_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ has_underfloor_heating_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="Gibt es eine Fußbodenheizung?" [(ngModel)]="has_underfloor_heating_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ measurement_point_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="Handelt es sich um einen Messpunkt?..." [(ngModel)]="measurement_point_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ producer_of_cement_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="kg pro Mischung..." [(ngModel)]="producer_of_cement_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ sand_grading_line_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="A/B 0-8...." [(ngModel)]="sand_grading_line_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ crefix_product_amount_per_mix_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="..." [(ngModel)]="crefix_product_amount_per_mix_value" [contentEditable]="true">
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons">
+
+      <div class="button-left">
+        <div class="back-button" (click)="returnOnePage()">
+          <span class="back-text-button">{{ back_button_label }}</span>
+        </div>
+      </div>
+
+      <div class="button-right">
+        <div class="forward-button" (click)="saveTechnicalData()">
+          <span class="forward-text-button">{{ forward_button_label }}</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+

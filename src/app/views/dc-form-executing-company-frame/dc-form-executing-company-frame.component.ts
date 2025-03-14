@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
 import {DataService} from '../../services/data.service';
-import {ICmDocumentJson} from '../../models/cm-document.model';
 import {CmDosageConfirmationJson, IDosageConfirmationFormJson} from '../../models/dosage-confirmation-form.model';
 import {firstValueFrom} from 'rxjs';
 
