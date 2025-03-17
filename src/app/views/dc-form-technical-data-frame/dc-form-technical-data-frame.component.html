@@ -45,9 +45,14 @@
       </div>
 
       <div class="input-field">
-        <span class="text-label">{{ measurement_point_label }}</span>
+
         <div class="input-element">
-          <input class="input-field" placeholder="Handelt es sich um einen Messpunkt?..." [(ngModel)]="measurement_point_value" [contentEditable]="true">
+          <div class="button-left">
+            <span class="text-label">{{ measurement_point_label }}</span>
+          </div>
+          <div class="button-right">
+            <input type="checkbox" [(ngModel)]="isMeasurementPointChecked" name="agree" />
+          </div>
         </div>
       </div>
 

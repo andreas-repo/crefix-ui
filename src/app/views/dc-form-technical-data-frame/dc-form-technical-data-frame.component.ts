@@ -17,24 +17,23 @@ export class DcFormTechnicalDataFrameComponent {
   forward_button_label: string = "Weiter";
   back_button_label: string = 'Zurück';
   tab_label: string = '';
-  screed_construction_from: string = 'Estrichbau vom';
+  screed_construction_from: string = 'Estrichbauarbeiten geplant vom:';
   screed_construction_from_value: string = '';
-  screed_construction_until: string = 'Estrichbau bis';
+  screed_construction_until: string = 'Estrichbauarbeiten geplant bis:';
   screed_construction_until_value: string = '';
-  screed_area_label: string = 'Estrichfläche';
+  screed_area_label: string = 'Estrichfläche:';
   screed_area_value: string = '';
-  screed_strength_label: string = 'Estrichfestigkeit';
+  screed_strength_label: string = 'Estrichfestigkeit:';
   screed_strength_value: string = '';
-  has_underfloor_heating_label: string = 'Fußbodenheizung';
-  has_underfloor_heating_value: string = '';
+  has_underfloor_heating_label: string = 'Hat Fußbodenheizung:';
   isChecked: boolean = false;
   measurement_point_label: string = 'Messpunkt';
-  measurement_point_value: string = '';
-  producer_of_cement_label: string = 'Hersteller des Zementes';
+  isMeasurementPointChecked: boolean = false;
+  producer_of_cement_label: string = 'Zementerzeuger:';
   producer_of_cement_value: string = '';
-  sand_grading_line_label: string = 'Korngrößenlinie des Sandes';
+  sand_grading_line_label: string = 'Korngrößen des verwendeten Sandes:';
   sand_grading_line_value: string = '';
-  crefix_product_amount_per_mix_label: string = 'Crefix Produktmenge pro Mischung';
+  crefix_product_amount_per_mix_label: string = 'Crefix Produkt/Menge pro Mischung:';
   crefix_product_amount_per_mix_value: string = '';
 
   dataService: DataService;
@@ -63,8 +62,8 @@ export class DcFormTechnicalDataFrameComponent {
     this.iDosageConfirmationFormJsonData.screedConstructionUntil = this.screed_construction_until_value;
     this.iDosageConfirmationFormJsonData.screedConstructionArea = this.screed_area_value;
     this.iDosageConfirmationFormJsonData.screedConstructionThickness = this.screed_strength_value;
-    this.iDosageConfirmationFormJsonData.hasUnderfloorHeating = Boolean(this.isChecked);
-    this.iDosageConfirmationFormJsonData.measurementPoint = this.measurement_point_value;
+    this.iDosageConfirmationFormJsonData.hasUnderfloorHeating = this.isChecked;
+    this.iDosageConfirmationFormJsonData.measurementPoint = this.isMeasurementPointChecked; //TODO error while matching from angular to database, boolean values wont be saved corectly
     this.iDosageConfirmationFormJsonData.producerOfCement = this.producer_of_cement_value;
     this.iDosageConfirmationFormJsonData.sandGradingLine = this.sand_grading_line_value;
     this.iDosageConfirmationFormJsonData.crefixProductAmountPerMix = this.crefix_product_amount_per_mix_value;

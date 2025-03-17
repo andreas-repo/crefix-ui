@@ -19,7 +19,7 @@ export interface IDosageConfirmationFormJson {
   screedConstructionArea: string;
   screedConstructionThickness: string;
   hasUnderfloorHeating: boolean;
-  measurementPoint: string;
+  measurementPoint: boolean;
   producerOfCement: string;
   sandGradingLine: string;
   crefixProductAmountPerMix: string;
@@ -61,10 +61,10 @@ export class CmDosageConfirmationJson implements Deserializable, IDosageConfirma
   _screedConstructionArea: string = '';
   @JsonProperty('screedConstructionThickness', String)
   _screedConstructionThickness: string = '';
-  @JsonProperty('screedConstructionHeight', String)
+  @JsonProperty('hasUnderfloorHeating', String)
   _hasUnderfloorHeating: boolean = false;
   @JsonProperty('measuringPoint', String)
-  _measurementPoint: string = '';
+  _measurementPoint: boolean = false;
   @JsonProperty('producerOfCement', String)
   _producerOfCement: string = '';
   @JsonProperty('sandGradingLine', String)
@@ -218,11 +218,11 @@ export class CmDosageConfirmationJson implements Deserializable, IDosageConfirma
     this._hasUnderfloorHeating = value;
   }
 
-  get measurementPoint(): string {
+  get measurementPoint(): boolean {
     return this._measurementPoint;
   }
 
-  set measurementPoint(value: string) {
+  set measurementPoint(value: boolean) {
     this._measurementPoint = value;
   }
 
