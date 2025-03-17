@@ -1,14 +1,23 @@
 import { Component } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DataService} from '../../services/data.service';
 import {CmDosageConfirmationJson, IDosageConfirmationFormJson} from '../../models/dosage-confirmation-form.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {firstValueFrom} from 'rxjs';
+import {CommonModule} from '@angular/common';
+import {MatInputModule} from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @Component({
   selector: 'app-dc-form-technical-data-frame',
   imports: [
-    FormsModule
+    FormsModule,
+    CommonModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   templateUrl: './dc-form-technical-data-frame.component.html',
   styleUrl: './dc-form-technical-data-frame.component.css'
@@ -18,9 +27,9 @@ export class DcFormTechnicalDataFrameComponent {
   back_button_label: string = 'Zurück';
   tab_label: string = '';
   screed_construction_from: string = 'Estrichbauarbeiten geplant vom:';
-  screed_construction_from_value: string = '';
+  selectedFromDate: FormControl = new FormControl<string | null>(null);
   screed_construction_until: string = 'Estrichbauarbeiten geplant bis:';
-  screed_construction_until_value: string = '';
+  selectedUntilDate: FormControl = new FormControl<string | null>(null);
   screed_area_label: string = 'Estrichfläche:';
   screed_area_value: string = '';
   screed_strength_label: string = 'Estrichfestigkeit:';
@@ -42,6 +51,7 @@ export class DcFormTechnicalDataFrameComponent {
   private route: ActivatedRoute;
   private router: Router;
 
+
   constructor(route: ActivatedRoute, router: Router, dataService: DataService) {
     this.router = router;
     this.route = route;
@@ -58,8 +68,12 @@ export class DcFormTechnicalDataFrameComponent {
   }
 
   async saveTechnicalData() {
-    this.iDosageConfirmationFormJsonData.screedConstructionFrom = this.screed_construction_from_value;
-    this.iDosageConfirmationFormJsonData.screedConstructionUntil = this.screed_construction_until_value;
+    if (this.selectedFromDate.value !== null) {
+      this.iDosageConfirmationFormJsonData.screedConstructionFrom = this.selectedFromDate.value;
+    }
+    if (this.selectedUntilDate.value !== null) {
+      this.iDosageConfirmationFormJsonData.screedConstructionUntil = this.selectedUntilDate.value;
+    }
     this.iDosageConfirmationFormJsonData.screedConstructionArea = this.screed_area_value;
     this.iDosageConfirmationFormJsonData.screedConstructionThickness = this.screed_strength_value;
     this.iDosageConfirmationFormJsonData.hasUnderfloorHeating = this.isChecked;

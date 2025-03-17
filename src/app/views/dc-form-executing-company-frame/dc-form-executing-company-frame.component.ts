@@ -1,14 +1,23 @@
 import { Component } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
 import {DataService} from '../../services/data.service';
 import {CmDosageConfirmationJson, IDosageConfirmationFormJson} from '../../models/dosage-confirmation-form.model';
 import {firstValueFrom} from 'rxjs';
+import {CommonModule} from '@angular/common';
+import {MatInputModule} from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @Component({
   selector: 'app-dc-form-executing-company-frame',
   imports: [
-    FormsModule
+    FormsModule,
+    CommonModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   templateUrl: './dc-form-executing-company-frame.component.html',
   styleUrl: './dc-form-executing-company-frame.component.css'
@@ -34,7 +43,7 @@ export class DcFormExecutingCompanyFrameComponent {
   contact_person_email_label: string = 'Email des Ansprechpartners';
   contact_person_email_value: string = '';
   date_of_measurement_label: string = 'Termin für die Messung';
-  date_of_measurement_value: string = '';
+  selectedDate = new FormControl<string | null>(null);
 
   dataService: DataService;
   iDosageConfirmationFormJsonData: IDosageConfirmationFormJson = new CmDosageConfirmationJson();
@@ -74,6 +83,8 @@ export class DcFormExecutingCompanyFrameComponent {
 
 
   async saveExecutingCompanyData() {
+    console.log('Selected Date:', this.selectedDate.value);
+
     this.iDosageConfirmationFormJsonData.screedCompany = this.screed_company_value;
     this.iDosageConfirmationFormJsonData.jobSiteAddress = this.job_site_address_value;
     this.iDosageConfirmationFormJsonData.jobSiteCity = this.job_site_city_value;
@@ -82,7 +93,9 @@ export class DcFormExecutingCompanyFrameComponent {
     this.iDosageConfirmationFormJsonData.contactPerson = this.contact_person_value;
     this.iDosageConfirmationFormJsonData.contactPersonPhone = this.contact_person_phone_value;
     this.iDosageConfirmationFormJsonData.contactPersonEmail = this.contact_person_email_value;
-    this.iDosageConfirmationFormJsonData.appointmentDate = this.date_of_measurement_value;
+    if (this.selectedDate.value != null) {
+      this.iDosageConfirmationFormJsonData.appointmentDate = this.selectedDate.value;
+    }
 
     await firstValueFrom(this.dataService.updateDcForm(this.iDosageConfirmationFormJsonData.id, JSON.stringify(this.iDosageConfirmationFormJsonData)));
     console.log("Saved executing company data: " + JSON.stringify(this.iDosageConfirmationFormJsonData));

@@ -8,14 +8,28 @@
       <div class="input-field">
         <span class="text-label">{{ screed_construction_from }}</span>
         <div class="input-element">
-          <input class="input-field" placeholder="dd.MM.yyyy" [(ngModel)]="screed_construction_from_value" [contentEditable]="true">
+          <form (ngSubmit)="saveTechnicalData()">
+            <mat-form-field appearance="fill">
+              <mat-label>Datum Auswählen...</mat-label>
+              <input matInput [matDatepicker]="picker" [formControl]="selectedFromDate">
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </form>
         </div>
       </div>
 
       <div class="input-field">
         <span class="text-label">{{ screed_construction_until }}</span>
         <div class="input-element">
-          <input class="input-field" placeholder="dd.MM.yyyy" [(ngModel)]="screed_construction_until_value" [contentEditable]="true">
+          <form (ngSubmit)="saveTechnicalData()">
+            <mat-form-field appearance="fill">
+              <mat-label>Datum Auswählen...</mat-label>
+              <input matInput [matDatepicker]="picker2" [formControl]="selectedUntilDate">
+              <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+          </form>
         </div>
       </div>
 
@@ -30,6 +44,27 @@
         <span class="text-label">{{ screed_strength_label }}</span>
         <div class="input-element">
           <input class="input-field" placeholder="mm" [(ngModel)]="screed_strength_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ producer_of_cement_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="Zementhersteller" [(ngModel)]="producer_of_cement_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ sand_grading_line_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="A/B 0-8mm oder A/B 0-4mm" [(ngModel)]="sand_grading_line_value" [contentEditable]="true">
+        </div>
+      </div>
+
+      <div class="input-field">
+        <span class="text-label">{{ crefix_product_amount_per_mix_label }}</span>
+        <div class="input-element">
+          <input class="input-field" placeholder="Mischratio" [(ngModel)]="crefix_product_amount_per_mix_value" [contentEditable]="true">
         </div>
       </div>
 
@@ -55,28 +90,8 @@
           </div>
         </div>
       </div>
-
-      <div class="input-field">
-        <span class="text-label">{{ producer_of_cement_label }}</span>
-        <div class="input-element">
-          <input class="input-field" placeholder="Zementhersteller" [(ngModel)]="producer_of_cement_value" [contentEditable]="true">
-        </div>
-      </div>
-
-      <div class="input-field">
-        <span class="text-label">{{ sand_grading_line_label }}</span>
-        <div class="input-element">
-          <input class="input-field" placeholder="A/B 0-8mm oder A/B 0-4mm" [(ngModel)]="sand_grading_line_value" [contentEditable]="true">
-        </div>
-      </div>
-
-      <div class="input-field">
-        <span class="text-label">{{ crefix_product_amount_per_mix_label }}</span>
-        <div class="input-element">
-          <input class="input-field" placeholder="Mischratio" [(ngModel)]="crefix_product_amount_per_mix_value" [contentEditable]="true">
-        </div>
-      </div>
     </div>
+
 
     <div class="buttons">
 

@@ -187,6 +187,10 @@
   align-self: center;
 }
 
+.mat-mdc-form-field {
+  display: contents;
+}
+
 
 
 
