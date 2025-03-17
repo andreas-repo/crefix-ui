@@ -34,9 +34,13 @@
       </div>
 
       <div class="input-field">
-        <span class="text-label">{{ has_underfloor_heating_label }}</span>
         <div class="input-element">
-          <input type="checkbox" [(ngModel)]="isChecked" name="agree" />
+          <div class="button-left">
+            <span class="text-label">{{ has_underfloor_heating_label }}</span>
+          </div>
+          <div class="button-right">
+            <input type="checkbox" [(ngModel)]="isChecked" name="agree" />
+          </div>
         </div>
       </div>
 
