@@ -40,9 +40,12 @@ export class DcFormTechnicalDataFrameComponent {
   dataService: DataService;
   iDosageConfirmationFormJsonData: IDosageConfirmationFormJson = new CmDosageConfirmationJson();
   id: string = '';
+  private route: ActivatedRoute;
+  private router: Router;
 
-
-  constructor(private route: ActivatedRoute, private router: Router, dataService: DataService) {
+  constructor(route: ActivatedRoute, router: Router, dataService: DataService) {
+    this.router = router;
+    this.route = route;
     this.dataService = dataService;
     this.id = <string>this.route.snapshot.paramMap.get('id');
     this.dataService.getDcFormById(this.id).subscribe((data: IDosageConfirmationFormJson) => {

@@ -24,9 +24,14 @@ export class FinishedDcFormComponent {
   iDosageConfirmationFormJsonData: IDosageConfirmationFormJson = new CmDosageConfirmationJson();
   iCmDocumentJsonData: ICmDocumentJson = new CmDocumentJson();
   id: string = '';
+  cmDocumentId: string = '';
   emailRequest: EmailRequestJson = new EmailRequestJson();
+  private router: Router;
+  private route: ActivatedRoute;
 
-  constructor(private route: ActivatedRoute, private router: Router, dataService: DataService) {
+  constructor(route: ActivatedRoute, router: Router, dataService: DataService) {
+    this.route = route;
+    this.router = router;
     this.dataService = dataService;
     this.id = <string>this.route.snapshot.paramMap.get('id');
     this.dataService.getDcFormById(this.id).subscribe((data: IDosageConfirmationFormJson) => {
@@ -36,14 +41,15 @@ export class FinishedDcFormComponent {
   }
 
   async saveAndExecuteInvite() {
-    this.dataService.initializeDocument().subscribe((data: ICmDocumentJson) => {
+    await firstValueFrom(this.dataService.initializeDocument()).then((data: ICmDocumentJson) => {
       this.iCmDocumentJsonData = data;
+      this.cmDocumentId = this.iCmDocumentJsonData.id;
     })
 
     this.emailRequest = new EmailRequestJson();
     this.emailRequest.to = this.iDosageConfirmationFormJsonData.contactPersonEmail;
     this.emailRequest.dosageConfirmationId = this.iDosageConfirmationFormJsonData.id;
-    this.emailRequest.cmDocumentId = this.iCmDocumentJsonData.id;
+    this.emailRequest.cmDocumentId = this.cmDocumentId;
     console.log(this.emailRequest);
 
     await firstValueFrom(this.dataService.sendCmDocumentInvitation(JSON.stringify(this.emailRequest)));

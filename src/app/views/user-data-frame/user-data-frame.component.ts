@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {DataService} from '../../services/data.service';
 import {FormsModule} from '@angular/forms';
 import {firstValueFrom} from 'rxjs';
@@ -30,12 +30,16 @@ export class UserDataFrameComponent {
   dataService: DataService;
   lat: string = '';
   lng: string = '';
+  id: string = '';
+  route: ActivatedRoute;
 
-  constructor(private router: Router, dataService: DataService) {
-      this.dataService = dataService;
-      this.dataService.initializeDocument().subscribe((data: ICmDocumentJson) => {
+  constructor(route: ActivatedRoute, private router: Router, dataService: DataService) {
+    this.route = route;
+    this.dataService = dataService;
+    this.id = <string>this.route.snapshot.paramMap.get('id');
+    this.dataService.getCmDocumentById(this.id).subscribe((data: ICmDocumentJson) => {
       this.iCmDocumentJsonData = data;
-      console.log(this.iCmDocumentJsonData);
+      console.log("Received data from /getCmDocumentById: " + JSON.stringify(this.iCmDocumentJsonData));
     });
   }
 

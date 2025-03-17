@@ -35,7 +35,7 @@ export const routes: Routes = [
   {path: 'dc-form-technical-data-frame/:id', component: DcFormTechnicalDataFrameComponent},
   {path: 'finished-dc-form/:id', component: FinishedDcFormComponent},
   //CmDocument
-  {path: 'user-data-frame', component: UserDataFrameComponent},
+  {path: 'user-data-frame/:id', component: UserDataFrameComponent},
   {path: 'job-site-frame/:id', component: JobSiteFrameComponent},
   {path: 'identification-id-frame/:id', component: IdentificationIdFrameComponent},
   {path: 'measurement-one-frame/:id', component: MeasurementOneFrameComponent},
@@ -48,6 +48,6 @@ export const routes: Routes = [
   {path: 'measurement-four-image-frame/:id', component: MeasurementFourImageFrameComponent},
   {path: 'screed-details-frame/:id', component: ScreedDetailsFrameComponent},
   {path: 'finish-document-frame/:id', component: FinishDocumentFrameComponent},
-  {path: '', redirectTo: '/user-data-frame', pathMatch: 'full'},
+  {path: '', redirectTo: '/dc-form-executing-company-frame', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent},
 ];
