@@ -27,6 +27,7 @@ export class DcFormTechnicalDataFrameComponent {
   screed_strength_value: string = '';
   has_underfloor_heating_label: string = 'Fußbodenheizung';
   has_underfloor_heating_value: string = '';
+  isChecked: boolean = false;
   measurement_point_label: string = 'Messpunkt';
   measurement_point_value: string = '';
   producer_of_cement_label: string = 'Hersteller des Zementes';
@@ -39,6 +40,7 @@ export class DcFormTechnicalDataFrameComponent {
   dataService: DataService;
   iDosageConfirmationFormJsonData: IDosageConfirmationFormJson = new CmDosageConfirmationJson();
   id: string = '';
+
 
   constructor(private route: ActivatedRoute, private router: Router, dataService: DataService) {
     this.dataService = dataService;
@@ -58,7 +60,7 @@ export class DcFormTechnicalDataFrameComponent {
     this.iDosageConfirmationFormJsonData.screedConstructionUntil = this.screed_construction_until_value;
     this.iDosageConfirmationFormJsonData.screedConstructionArea = this.screed_area_value;
     this.iDosageConfirmationFormJsonData.screedConstructionThickness = this.screed_strength_value;
-    this.iDosageConfirmationFormJsonData.hasUnderfloorHeating = Boolean(this.has_underfloor_heating_value);
+    this.iDosageConfirmationFormJsonData.hasUnderfloorHeating = Boolean(this.isChecked);
     this.iDosageConfirmationFormJsonData.measurementPoint = this.measurement_point_value;
     this.iDosageConfirmationFormJsonData.producerOfCement = this.producer_of_cement_value;
     this.iDosageConfirmationFormJsonData.sandGradingLine = this.sand_grading_line_value;
@@ -67,7 +69,7 @@ export class DcFormTechnicalDataFrameComponent {
     await firstValueFrom(this.dataService.updateDcForm(this.iDosageConfirmationFormJsonData.id, JSON.stringify(this.iDosageConfirmationFormJsonData)));
     console.log("Saved technical data: " + JSON.stringify(this.iDosageConfirmationFormJsonData));
 
-    if(Boolean(this.has_underfloor_heating_value)) {
+    if(this.isChecked) {
       console.log("Has underfloor heating and must follow to the heatup form");
     } else {
       await this.router.navigate(['/finished-dc-form', this.iDosageConfirmationFormJsonData.id]);

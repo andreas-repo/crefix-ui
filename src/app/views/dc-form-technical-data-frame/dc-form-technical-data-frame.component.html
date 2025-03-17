@@ -36,7 +36,7 @@
       <div class="input-field">
         <span class="text-label">{{ has_underfloor_heating_label }}</span>
         <div class="input-element">
-          <input class="input-field" placeholder="Gibt es eine Fußbodenheizung?" [(ngModel)]="has_underfloor_heating_value" [contentEditable]="true">
+          <input type="checkbox" [(ngModel)]="isChecked" name="agree" />
         </div>
       </div>
 

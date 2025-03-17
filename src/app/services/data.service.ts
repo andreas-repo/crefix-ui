@@ -58,4 +58,8 @@ export class DataService {
   getDcFormById(id: string | null): Observable<any> {
     return this.http.get<any>(this.apiUrl + GET_CM_DOSAGE_CONFIRMATION + id);
   }
+
+  sendCmDocumentInvitation(body: string): Observable<any> {
+    return this.http.post<any>(this.apiUrl + '/mail/send', body, {headers: {'Content-Type': 'application/json'}});
+  }
 }
