@@ -8,28 +8,28 @@
       <div class="input-field">
         <span class="text-label">{{ screed_construction_from }}</span>
         <div class="input-element">
-          <input class="input-field" placeholder="Estrichbau von..." [(ngModel)]="screed_construction_from_value" [contentEditable]="true">
+          <input class="input-field" placeholder="dd.MM.yyyy" [(ngModel)]="screed_construction_from_value" [contentEditable]="true">
         </div>
       </div>
 
       <div class="input-field">
         <span class="text-label">{{ screed_construction_until }}</span>
         <div class="input-element">
-          <input class="input-field" placeholder="Estrichbau von..." [(ngModel)]="screed_construction_until_value" [contentEditable]="true">
+          <input class="input-field" placeholder="dd.MM.yyyy" [(ngModel)]="screed_construction_until_value" [contentEditable]="true">
         </div>
       </div>
 
       <div class="input-field">
         <span class="text-label">{{ screed_area_label }}</span>
         <div class="input-element">
-          <input class="input-field" placeholder="Bitte Estrichfläche angeben..." [(ngModel)]="screed_area_value" [contentEditable]="true">
+          <input class="input-field" placeholder="m²" [(ngModel)]="screed_area_value" [contentEditable]="true">
         </div>
       </div>
 
       <div class="input-field">
         <span class="text-label">{{ screed_strength_label }}</span>
         <div class="input-element">
-          <input class="input-field" placeholder="Bitte Estrichstärke angeben..." [(ngModel)]="screed_strength_value" [contentEditable]="true">
+          <input class="input-field" placeholder="mm" [(ngModel)]="screed_strength_value" [contentEditable]="true">
         </div>
       </div>
 
@@ -59,21 +59,21 @@
       <div class="input-field">
         <span class="text-label">{{ producer_of_cement_label }}</span>
         <div class="input-element">
-          <input class="input-field" placeholder="kg pro Mischung..." [(ngModel)]="producer_of_cement_value" [contentEditable]="true">
+          <input class="input-field" placeholder="Zementhersteller" [(ngModel)]="producer_of_cement_value" [contentEditable]="true">
         </div>
       </div>
 
       <div class="input-field">
         <span class="text-label">{{ sand_grading_line_label }}</span>
         <div class="input-element">
-          <input class="input-field" placeholder="A/B 0-8...." [(ngModel)]="sand_grading_line_value" [contentEditable]="true">
+          <input class="input-field" placeholder="A/B 0-8mm oder A/B 0-4mm" [(ngModel)]="sand_grading_line_value" [contentEditable]="true">
         </div>
       </div>
 
       <div class="input-field">
         <span class="text-label">{{ crefix_product_amount_per_mix_label }}</span>
         <div class="input-element">
-          <input class="input-field" placeholder="..." [(ngModel)]="crefix_product_amount_per_mix_value" [contentEditable]="true">
+          <input class="input-field" placeholder="Mischratio" [(ngModel)]="crefix_product_amount_per_mix_value" [contentEditable]="true">
         </div>
       </div>
     </div>
