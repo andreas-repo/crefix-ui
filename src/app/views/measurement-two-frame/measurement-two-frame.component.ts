@@ -1,16 +1,26 @@
 import { Component } from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DataService} from '../../services/data.service';
 import {firstValueFrom} from 'rxjs';
 import {CmDocumentJson, ICmDocumentJson} from '../../models/cm-document.model';
 import {IMeasurementJson, MeasurementJson} from '../../models/measurement.model';
+import {
+  MatDatepickerModule
+} from '@angular/material/datepicker';
+import {MatInputModule} from '@angular/material/input';
+import {CommonModule} from '@angular/common';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @Component({
   selector: 'app-measurement-two-frame',
   imports: [
+    FormsModule,
+    CommonModule,
     ReactiveFormsModule,
-    FormsModule
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   templateUrl: './measurement-two-frame.component.html',
   styleUrl: './measurement-two-frame.component.css'
@@ -22,9 +32,9 @@ export class MeasurementTwoFrameComponent {
   floor_label: string = 'Stockwerk / Wohnung / Raum';
   floor_value: string = "";
   layed_at_label: string = 'Estrich/Schüttung verlegt am';
-  layed_at_value: string = "";
+  selectedLayedAtDate: FormControl = new FormControl<string | null>(null);
   date_of_measurement_label: string = 'Datum-CM-Messung';
-  date_of_measurement_value: string = "";
+  selectedDateOfMeasurementDate: FormControl = new FormControl<string | null>(null);
   initial_weight_label: string = 'Einwaage 50g';
   initial_weight_value: string = "";
   pressure_gauge_display_label: string = 'Manometeranzeige in bar';
@@ -40,9 +50,9 @@ export class MeasurementTwoFrameComponent {
   installation_thickness_label: string = 'Einbaudicke in mm';
   installation_thickness_value: string = "";
   underfloor_heating_label: string = 'Bodenheizung';
-  underfloor_heating_value: string = "";
+  isUnderfloorHeatingChecked: boolean = false;
   ready_according_of_technical_datasheet_label: string = 'Belegreif lt. technischem Datenblatt Crefix';
-  ready_according_of_technical_datasheet_value: string = "";
+  isReadyAccordingOfTechnicalDatasheetChecked: boolean = false;
 
   iCmDocumentJsonData: CmDocumentJson = new CmDocumentJson();
   iMeasurementJsonData: IMeasurementJson = new MeasurementJson();
@@ -71,8 +81,15 @@ export class MeasurementTwoFrameComponent {
     });
 
     this.iMeasurementJsonData.floor = this.floor_value;
-    this.iMeasurementJsonData.layedAt = this.layed_at_value;
-    this.iMeasurementJsonData.dateOfMeasurement = this.date_of_measurement_value;
+
+    if (this.selectedLayedAtDate.value !== null) {
+      this.iMeasurementJsonData.layedAt = this.selectedLayedAtDate.value;
+    }
+
+    if (this.selectedDateOfMeasurementDate.value !== null) {
+      this.iMeasurementJsonData.dateOfMeasurement = this.selectedDateOfMeasurementDate.value;
+    }
+
     this.iMeasurementJsonData.initialWeight = this.initial_weight_value;
     this.iMeasurementJsonData.pressureGaugeDisplay = this.pressure_gauge_display_value;
     this.iMeasurementJsonData.cmValue = this.cm_value;
@@ -80,8 +97,8 @@ export class MeasurementTwoFrameComponent {
     this.iMeasurementJsonData.humidity = this.humidity_value;
     this.iMeasurementJsonData.surfaceTemperature = this.surface_temperature_value;
     this.iMeasurementJsonData.installationThickness = this.installation_thickness_value;
-    this.iMeasurementJsonData.underfloorHeating = this.underfloor_heating_value;
-    this.iMeasurementJsonData.readyAccordingOfTechnicalDatasheet = this.ready_according_of_technical_datasheet_value;
+    this.iMeasurementJsonData.underfloorHeating = this.isUnderfloorHeatingChecked.toString();
+    this.iMeasurementJsonData.readyAccordingOfTechnicalDatasheet = this.isReadyAccordingOfTechnicalDatasheetChecked.toString();
 
     this.dataService.updateMeasurementById(this.measurement_id, JSON.stringify(this.iMeasurementJsonData)).subscribe((measurement: IMeasurementJson) => {
       console.log("Received result data from /updateMeasurementById: " + JSON.stringify(measurement));

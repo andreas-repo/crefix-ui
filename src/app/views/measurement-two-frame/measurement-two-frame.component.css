@@ -1,4 +1,4 @@
-.job-site-frame {
+.measurement-two-frame {
   position: initial;
   box-sizing: border-box;
   overflow: auto;
@@ -187,4 +187,8 @@
   background-color: white;
   color: black;
   align-self: center;
+}
+
+.mat-mdc-form-field {
+  display: contents;
 }
