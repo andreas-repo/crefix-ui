@@ -46,6 +46,9 @@ export class FinishedDcFormComponent {
       this.cmDocumentId = this.iCmDocumentJsonData.id;
     })
 
+    this.iCmDocumentJsonData = this.mapValuesFromDcFormToCmDocumentJson(this.iDosageConfirmationFormJsonData, this.iCmDocumentJsonData);
+    await firstValueFrom(this.dataService.updateCmDocument(this.iCmDocumentJsonData.id, JSON.stringify(this.iCmDocumentJsonData)));
+
     this.emailRequest = new EmailRequestJson();
     this.emailRequest.to = this.iDosageConfirmationFormJsonData.contactPersonEmail;
     this.emailRequest.dosageConfirmationId = this.iDosageConfirmationFormJsonData.id;
@@ -64,5 +67,16 @@ export class FinishedDcFormComponent {
 
   redirectToExternalSite() {
     window.location.href = 'https://www.crefix-gmbh.at';
+  }
+
+  private mapValuesFromDcFormToCmDocumentJson(iDosageConfirmationFormJsonData: IDosageConfirmationFormJson, iCmDocumentJson: ICmDocumentJson) {
+    iCmDocumentJson.email = iDosageConfirmationFormJsonData.contactPersonEmail;
+    iCmDocumentJson.phone = iDosageConfirmationFormJsonData.contactPersonPhone;
+
+    const nameParts = iDosageConfirmationFormJsonData.contactPerson.split(' ');
+    iCmDocumentJson.firstname = nameParts[0];
+    iCmDocumentJson.lastname = nameParts.length > 1 ? nameParts.slice(1).join(' ') : '';
+
+    return iCmDocumentJson;
   }
 }
