@@ -86,11 +86,9 @@ export class DcFormTechnicalDataFrameComponent {
     console.log("Saved technical data: " + JSON.stringify(this.iDosageConfirmationFormJsonData));
 
     if(this.isChecked) {
-      console.log("Has underfloor heating and must follow to the heatup form");
+      await this.router.navigate(['/heating-protocol-confirmation', this.iDosageConfirmationFormJsonData.id]);
     } else {
       await this.router.navigate(['/finished-dc-form', this.iDosageConfirmationFormJsonData.id]);
     }
-
-    //await this.router.navigate(['/finished-dc-form', this.iDosageConfirmationFormJsonData.id]);
   }
 }

@@ -28,12 +28,17 @@ import {
   DcFormTechnicalDataFrameComponent
 } from './views/dc-form-technical-data-frame/dc-form-technical-data-frame.component';
 import {FinishedDcFormComponent} from './views/finished-dc-form/finished-dc-form.component';
+import {
+  HeatingProtocolConfirmationComponent
+} from './views/heating-protocol-confirmation/heating-protocol-confirmation.component';
 
 export const routes: Routes = [
   //CmDosageConfirmation
   {path: 'dc-form-executing-company-frame', component: DcFormExecutingCompanyFrameComponent},
   {path: 'dc-form-technical-data-frame/:id', component: DcFormTechnicalDataFrameComponent},
   {path: 'finished-dc-form/:id', component: FinishedDcFormComponent},
+  //heating protocol confirmation
+  {path: 'heating-protocol-confirmation/:id', component: HeatingProtocolConfirmationComponent},
   //CmDocument
   {path: 'user-data-frame/:id', component: UserDataFrameComponent},
   {path: 'job-site-frame/:id', component: JobSiteFrameComponent},
@@ -49,5 +54,5 @@ export const routes: Routes = [
   {path: 'screed-details-frame/:id', component: ScreedDetailsFrameComponent},
   {path: 'finish-document-frame/:id', component: FinishDocumentFrameComponent},
   {path: '', redirectTo: '/dc-form-executing-company-frame', pathMatch: 'full'},
-  {path: '**', component: PageNotFoundComponent},
+  {path: '**', component: PageNotFoundComponent}
 ];
