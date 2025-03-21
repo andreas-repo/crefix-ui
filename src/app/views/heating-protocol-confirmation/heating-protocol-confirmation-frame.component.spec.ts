@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeatingProtocolConfirmationComponent } from './heating-protocol-confirmation.component';
+import { HeatingProtocolConfirmationFrameComponent } from './heating-protocol-confirmation-frame.component';
 
 describe('HeatingProtocolConfirmationComponent', () => {
-  let component: HeatingProtocolConfirmationComponent;
-  let fixture: ComponentFixture<HeatingProtocolConfirmationComponent>;
+  let component: HeatingProtocolConfirmationFrameComponent;
+  let fixture: ComponentFixture<HeatingProtocolConfirmationFrameComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HeatingProtocolConfirmationComponent]
+      imports: [HeatingProtocolConfirmationFrameComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HeatingProtocolConfirmationComponent);
+    fixture = TestBed.createComponent(HeatingProtocolConfirmationFrameComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

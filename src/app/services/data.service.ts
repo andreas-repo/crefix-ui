@@ -62,4 +62,16 @@ export class DataService {
   sendCmDocumentInvitation(body: string): Observable<any> {
     return this.http.post<any>(this.apiUrl + '/mail/send', body, {headers: {'Content-Type': 'application/json'}});
   }
+
+  getHeatingProtocolConfirmationById(id: string | null): Observable<any> {
+    return this.http.get<any>(this.apiUrl + "/getHeatingProtocol/" + id);
+  }
+
+  createHeatingProtocol(body: string): Observable<any> {
+    return this.http.post<any>(this.apiUrl + "/createHeatingProtocol", body, {headers: {'Content-Type': 'application/json'}});
+  }
+
+  updateHeatingProtocol(id: string, body: string): Observable<any> {
+    return this.http.post<any>(this.apiUrl + "/updateHeatingProtocol/" + id, body, {headers: {'Content-Type': 'application/json'}});
+  }
 }

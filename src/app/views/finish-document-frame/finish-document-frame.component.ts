@@ -33,13 +33,15 @@ export class FinishDocumentFrameComponent {
 
 
   async finishDocument() {
-
-    //TODO: Imnplement the send mail endpoint
-
-    await this.router.navigate(['/', this.id]);
+    //redirect after finished to crefix homepage
+    this.redirectToExternalSite();
   }
 
   returnOnePage() {
     this.router.navigate(['/screed-details-frame']);
+  }
+
+  redirectToExternalSite() {
+    window.location.href = 'https://www.crefix-gmbh.at';
   }
 }

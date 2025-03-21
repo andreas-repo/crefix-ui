@@ -29,8 +29,8 @@ import {
 } from './views/dc-form-technical-data-frame/dc-form-technical-data-frame.component';
 import {FinishedDcFormComponent} from './views/finished-dc-form/finished-dc-form.component';
 import {
-  HeatingProtocolConfirmationComponent
-} from './views/heating-protocol-confirmation/heating-protocol-confirmation.component';
+  HeatingProtocolConfirmationFrameComponent
+} from './views/heating-protocol-confirmation/heating-protocol-confirmation-frame.component';
 
 export const routes: Routes = [
   //CmDosageConfirmation
@@ -38,7 +38,7 @@ export const routes: Routes = [
   {path: 'dc-form-technical-data-frame/:id', component: DcFormTechnicalDataFrameComponent},
   {path: 'finished-dc-form/:id', component: FinishedDcFormComponent},
   //heating protocol confirmation
-  {path: 'heating-protocol-confirmation/:id', component: HeatingProtocolConfirmationComponent},
+  {path: 'heating-protocol-confirmation-frame/:id', component: HeatingProtocolConfirmationFrameComponent},
   //CmDocument
   {path: 'user-data-frame/:id', component: UserDataFrameComponent},
   {path: 'job-site-frame/:id', component: JobSiteFrameComponent},
