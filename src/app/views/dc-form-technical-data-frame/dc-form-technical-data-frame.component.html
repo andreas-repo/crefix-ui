@@ -57,7 +57,13 @@
       <div class="input-field">
         <span class="text-label">{{ sand_grading_line_label }}</span>
         <div class="input-element">
-          <input class="input-field" placeholder="A/B 0-8mm oder A/B 0-4mm" [(ngModel)]="sand_grading_line_value" [contentEditable]="true">
+          <mat-form-field>
+            <mat-label>Auswählen...</mat-label>
+            <mat-select [(value)]="sand_grading_line_value">
+              <mat-option value="A/B 0-4mm">A/B 0-4mm</mat-option>
+              <mat-option value="A/B 0-8mm">A/B 0-8mm</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
       </div>
 

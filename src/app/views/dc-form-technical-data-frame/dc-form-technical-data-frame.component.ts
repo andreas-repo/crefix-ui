@@ -7,7 +7,8 @@ import {firstValueFrom} from 'rxjs';
 import {CommonModule} from '@angular/common';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
+import {MatNativeDateModule, MatOption} from '@angular/material/core';
+import {MatSelect} from '@angular/material/select';
 
 @Component({
   selector: 'app-dc-form-technical-data-frame',
@@ -17,7 +18,9 @@ import {MatNativeDateModule} from '@angular/material/core';
     ReactiveFormsModule,
     MatInputModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSelect,
+    MatOption
   ],
   templateUrl: './dc-form-technical-data-frame.component.html',
   styleUrl: './dc-form-technical-data-frame.component.css'
@@ -50,7 +53,6 @@ export class DcFormTechnicalDataFrameComponent {
   id: string = '';
   private route: ActivatedRoute;
   private router: Router;
-
 
   constructor(route: ActivatedRoute, router: Router, dataService: DataService) {
     this.router = router;
