@@ -153,8 +153,6 @@ export class HeatingProtocolConfirmationFrameComponent {
     });
   }
 
-
-
   returnOnePage() {
     this.router.navigate(['/dc-form-executing-company-frame', this.id]);
   }
@@ -164,6 +162,7 @@ export class HeatingProtocolConfirmationFrameComponent {
     this.iHeatingProtocolConfirmationJson.constructionProject = this.construction_project_value;
     this.iHeatingProtocolConfirmationJson.screedLayerEmail = this.executing_screed_layer_value;
     this.iHeatingProtocolConfirmationJson.constructionSection = this.construction_section_value;
+
     if (this.selectedFromDate.value !== null) {
       this.iHeatingProtocolConfirmationJson.beginningOfHeating = this.selectedFromDate.value;
     }

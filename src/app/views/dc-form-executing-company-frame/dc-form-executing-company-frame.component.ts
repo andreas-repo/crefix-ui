@@ -8,6 +8,8 @@ import {CommonModule} from '@angular/common';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import {MatTooltip, TooltipPosition} from '@angular/material/tooltip';
+import {MatButton} from '@angular/material/button';
 
 @Component({
   selector: 'app-dc-form-executing-company-frame',
@@ -17,7 +19,9 @@ import {MatNativeDateModule} from '@angular/material/core';
     ReactiveFormsModule,
     MatInputModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatTooltip,
+    MatButton
   ],
   templateUrl: './dc-form-executing-company-frame.component.html',
   styleUrl: './dc-form-executing-company-frame.component.css'
@@ -49,6 +53,9 @@ export class DcFormExecutingCompanyFrameComponent {
   iDosageConfirmationFormJsonData: IDosageConfirmationFormJson = new CmDosageConfirmationJson();
   lat: string = '';
   lng: string = '';
+
+  positionOptions: TooltipPosition[] = ['above'];
+  position = new FormControl(this.positionOptions[0]);
 
   constructor(private router: Router, dataService: DataService) {
     this.dataService = dataService;

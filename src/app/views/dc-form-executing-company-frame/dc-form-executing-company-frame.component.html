@@ -41,21 +41,44 @@
       </div>
 
       <div class="input-field">
-        <span class="text-label">{{ contact_person_label }}</span>
+        <span class="text-label">
+          {{ contact_person_label }}
+          <button class="tooltip-button"
+                  matTooltip="Installateur oder Estrichleger, welcher den nächsten Schritt ausführt."
+                  [matTooltipPosition]='position.value!'>
+          ?
+          </button>
+        </span>
+
         <div class="input-element">
           <input class="input-field" placeholder="Ausführende Kontaktperson" [(ngModel)]="contact_person_value" [contentEditable]="true">
         </div>
       </div>
 
       <div class="input-field">
-        <span class="text-label">{{ contact_person_phone_label }}</span>
+        <span class="text-label">
+          {{ contact_person_phone_label }}
+          <button class="tooltip-button"
+                  matTooltip="Telefonnummer von Installateur oder Estrichleger, welcher den nächsten Schritt ausführt."
+                  [matTooltipPosition]='position.value!'>
+          ?
+          </button>
+        </span>
+
         <div class="input-element">
           <input class="input-field" placeholder="Telefonnummer der Kontaktperson" [(ngModel)]="contact_person_phone_value" [contentEditable]="true">
         </div>
       </div>
 
       <div class="input-field">
-        <span class="text-label">{{ contact_person_email_label }}</span>
+        <span class="text-label">
+          {{ contact_person_email_label }}
+          <button class="tooltip-button"
+                  matTooltip="Emailadresse von Installateur oder Estrichleger, welcher den nächsten Schritt ausführt."
+                  [matTooltipPosition]='position.value!'>
+          ?
+          </button>
+        </span>
         <div class="input-element">
           <input class="input-field" placeholder="Emailadresse der Kontaktperson" [(ngModel)]="contact_person_email_value" [contentEditable]="true">
         </div>
