@@ -30,7 +30,7 @@ export class DcFormExecutingCompanyFrameComponent {
   tab_label : string = '';
   back_button_label: string = 'Zurück';
   forward_button_label: string = 'Weiter';
-  screed_company_label: string = 'Estrichfirma';
+  screed_company_label: string = 'Bauleiter/Umsetzende Firma';
   screed_company_value: string = '';
   job_site_address_label: string = 'Adresse des Bauvorhabens';
   job_site_address_value: string = '';
@@ -46,7 +46,7 @@ export class DcFormExecutingCompanyFrameComponent {
   contact_person_phone_value: string = '';
   contact_person_email_label: string = 'Email des Ansprechpartners';
   contact_person_email_value: string = '';
-  date_of_measurement_label: string = 'Termin für die Messung';
+  date_of_measurement_label: string = 'Termin für die (geplante) Messung';
   selectedDate = new FormControl<string | null>(null);
 
   dataService: DataService;
