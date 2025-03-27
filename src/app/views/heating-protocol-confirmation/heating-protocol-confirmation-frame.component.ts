@@ -23,7 +23,6 @@ import {
 import {MatNativeDateModule} from '@angular/material/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DataService} from '../../services/data.service';
-import {CmDosageConfirmationJson, IDosageConfirmationFormJson} from '../../models/dosage-confirmation-form.model';
 import {HeatingProtocolJson, IHeatingProtocolJson} from '../../models/heating-protocol.model';
 import {firstValueFrom} from 'rxjs';
 
@@ -36,13 +35,6 @@ const DATA: HeatingProtocolDataSource[] = [
   {days: '10.-11. Tag', flowTemperature: '25 °C', returnTemperature: '', date: '', time: ''},
   {days: '12. Tag', flowTemperature: '20 °C', returnTemperature: '', date: '', time: ''},
   {days: '13. Tag', flowTemperature: 'CM-Messung bei 20 °C', returnTemperature: '', date: '', time: ''},
-];
-
-const USER_DATA = [
-  {"name": "John Smith", "occupation": "Advisor", "age": 36},
-  {"name": "Muhi Masri", "occupation": "Developer", "age": 28},
-  {"name": "Peter Adams", "occupation": "HR", "age": 20},
-  {"name": "Lora Bay", "occupation": "Marketing", "age": 43}
 ];
 
 const COLUMNS_SCHEMA = [
@@ -82,24 +74,8 @@ const COLUMNS_SCHEMA = [
   selector: 'app-heating-protocol-confirmation-frame',
   imports: [
     FormsModule,
-    MatTable,
-    MatColumnDef,
-    MatHeaderCell,
-    MatCell,
-    MatHeaderCellDef,
-    MatCellDef,
-    MatHeaderRow,
-    MatHeaderRowDef,
-    MatRow,
-    MatRowDef,
-    NgForOf,
     MatFormField,
     MatInput,
-    NgSwitch,
-    MatButton,
-    NgSwitchDefault,
-    NgIf,
-    NgSwitchCase,
     MatDatepicker,
     MatDatepickerInput,
     MatDatepickerToggle,
@@ -124,9 +100,6 @@ export class HeatingProtocolConfirmationFrameComponent {
   executing_screed_layer_value: string = '';
   construction_section_label: string = 'Bauabschnitt';
   construction_section_value: string = '';
-  displayedColumns: string[] = ['days', 'flowTemperature', 'returnTemperature', 'date', 'time', 'isEdit'];
-  dataSource: any = DATA;
-  columnsSchema: any = COLUMNS_SCHEMA;
   beginning_heating_protocol_label: string = 'Beginn Heizprotokoll';
   selectedFromDate: FormControl = new FormControl<string | null>(null);
   end_of_heating_protocol_label: string = 'Ende Heizprotokoll';
@@ -135,6 +108,22 @@ export class HeatingProtocolConfirmationFrameComponent {
   heater_fabricant_value: string = '';
   area_was_free_label: string = 'Fussbodenfläche war frei von Materialien und Überdeckungen';
   isAreaFreeChecked: boolean = false;
+  day_one_value: string = '';
+  day_one_date: string = '';
+  day_two_value: string = '';
+  day_two_date: string = '';
+  day_three_value: string = '';
+  day_three_date: string = '';
+  day_four_to_eight_value: string = '';
+  day_four_to_eight_date: string = '';
+  day_nine_value: string = '';
+  day_nine_date: string = '';
+  day_ten_to_eleven_value: string = '';
+  day_ten_to_eleven_date: string = '';
+  day_twelve_value: string = '';
+  day_twelve_date: string = '';
+  day_thirteen_value: string = '';
+  day_thirteen_date: string = '';
 
   dataService: DataService;
   iHeatingProtocolConfirmationJson: IHeatingProtocolJson = new HeatingProtocolJson();
@@ -142,11 +131,13 @@ export class HeatingProtocolConfirmationFrameComponent {
   private route: ActivatedRoute;
   private router: Router;
 
+
   constructor(route: ActivatedRoute, router: Router, dataService: DataService) {
     this.router = router;
     this.route = route;
     this.dataService = dataService;
     this.id = <string>this.route.snapshot.paramMap.get('id');
+
     this.dataService.createHeatingProtocol("{}").subscribe((data: IHeatingProtocolJson) => {
       this.iHeatingProtocolConfirmationJson = data;
       console.log(this.iHeatingProtocolConfirmationJson);
@@ -169,24 +160,25 @@ export class HeatingProtocolConfirmationFrameComponent {
     if (this.selectedUntilDate.value !== null) {
       this.iHeatingProtocolConfirmationJson.endOfHeating = this.selectedUntilDate.value;
     }
+
     this.iHeatingProtocolConfirmationJson.heaterManufacturer = this.heater_fabricant_value;
     this.iHeatingProtocolConfirmationJson.confirmationAreaWasFree = this.isAreaFreeChecked;
-    this.iHeatingProtocolConfirmationJson.dayOneConfirmationValue = this.dataSource[0].returnTemperature;
-    this.iHeatingProtocolConfirmationJson.dayOneValueReadingTime = this.dataSource[0].time;
-    this.iHeatingProtocolConfirmationJson.dayTwoConfirmationValue = this.dataSource[1].returnTemperature;
-    this.iHeatingProtocolConfirmationJson.dayTwoValueReadingTime = this.dataSource[1].time;
-    this.iHeatingProtocolConfirmationJson.dayThreeConfirmationValue = this.dataSource[2].returnTemperature;
-    this.iHeatingProtocolConfirmationJson.dayThreeValueReadingTime = this.dataSource[2].time;
-    this.iHeatingProtocolConfirmationJson.dayFourToEightConfirmationValue = this.dataSource[3].returnTemperature;
-    this.iHeatingProtocolConfirmationJson.dayFourToEightValueReadingTime = this.dataSource[3].time;
-    this.iHeatingProtocolConfirmationJson.dayNineConfirmationValue = this.dataSource[4].returnTemperature;
-    this.iHeatingProtocolConfirmationJson.dayNineValueReadingTime = this.dataSource[4].time;
-    this.iHeatingProtocolConfirmationJson.dayTenToElevenConfirmationValue = this.dataSource[5].returnTemperature;
-    this.iHeatingProtocolConfirmationJson.dayTenToElevenValueReadingTime = this.dataSource[5].time;
-    this.iHeatingProtocolConfirmationJson.dayTwelveConfirmationValue = this.dataSource[6].returnTemperature;
-    this.iHeatingProtocolConfirmationJson.dayTwelveValueReadingTime = this.dataSource[6].time;
-    this.iHeatingProtocolConfirmationJson.dayThirteenConfirmationValue = this.dataSource[7].returnTemperature;
-    this.iHeatingProtocolConfirmationJson.dayThirteenValueReadingTime = this.dataSource[7].time;
+    this.iHeatingProtocolConfirmationJson.dayOneConfirmationValue = this.day_one_value;
+    this.iHeatingProtocolConfirmationJson.dayOneValueReadingTime = this.day_one_date;
+    this.iHeatingProtocolConfirmationJson.dayTwoConfirmationValue = this.day_two_value;
+    this.iHeatingProtocolConfirmationJson.dayTwoValueReadingTime = this.day_two_date;
+    this.iHeatingProtocolConfirmationJson.dayThreeConfirmationValue = this.day_three_value;
+    this.iHeatingProtocolConfirmationJson.dayThreeValueReadingTime = this.day_three_date;
+    this.iHeatingProtocolConfirmationJson.dayFourToEightConfirmationValue = this.day_four_to_eight_value;
+    this.iHeatingProtocolConfirmationJson.dayFourToEightValueReadingTime = this.day_four_to_eight_date;
+    this.iHeatingProtocolConfirmationJson.dayNineConfirmationValue = this.day_nine_value;
+    this.iHeatingProtocolConfirmationJson.dayNineValueReadingTime = this.day_nine_date;
+    this.iHeatingProtocolConfirmationJson.dayTenToElevenConfirmationValue = this.day_ten_to_eleven_value;
+    this.iHeatingProtocolConfirmationJson.dayTenToElevenValueReadingTime = this.day_ten_to_eleven_date;
+    this.iHeatingProtocolConfirmationJson.dayTwelveConfirmationValue = this.day_twelve_value;
+    this.iHeatingProtocolConfirmationJson.dayTwelveValueReadingTime = this.day_twelve_date;
+    this.iHeatingProtocolConfirmationJson.dayThirteenConfirmationValue = this.day_thirteen_value;
+    this.iHeatingProtocolConfirmationJson.dayThirteenValueReadingTime = this.day_thirteen_date;
 
     await firstValueFrom(this.dataService.updateHeatingProtocol(this.iHeatingProtocolConfirmationJson.id, JSON.stringify(this.iHeatingProtocolConfirmationJson)));
 

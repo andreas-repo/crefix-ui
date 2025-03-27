@@ -31,6 +31,7 @@ import {FinishedDcFormComponent} from './views/finished-dc-form/finished-dc-form
 import {
   HeatingProtocolConfirmationFrameComponent
 } from './views/heating-protocol-confirmation/heating-protocol-confirmation-frame.component';
+import {InvitePlumberToHpFrameComponent} from './views/invite-plumber-to-hp-frame/invite-plumber-to-hp-frame.component';
 
 export const routes: Routes = [
   //CmDosageConfirmation
@@ -38,6 +39,7 @@ export const routes: Routes = [
   {path: 'dc-form-technical-data-frame/:id', component: DcFormTechnicalDataFrameComponent},
   {path: 'finished-dc-form/:id', component: FinishedDcFormComponent},
   //heating protocol confirmation
+  {path: 'invite-plumber-to-hp-frame/:id', component: InvitePlumberToHpFrameComponent},
   {path: 'heating-protocol-confirmation-frame/:id', component: HeatingProtocolConfirmationFrameComponent},
   //CmDocument
   {path: 'user-data-frame/:id', component: UserDataFrameComponent},

@@ -47,6 +47,8 @@ export class DcFormTechnicalDataFrameComponent {
   sand_grading_line_value: string = '';
   crefix_product_amount_per_mix_label: string = 'Crefix Produkt/Menge pro Mischung:';
   crefix_product_amount_per_mix_value: string = '';
+  plumber_email_label: string = 'E-Mail des Installateurs:';
+  plumber_email_value: string = '';
 
   dataService: DataService;
   iDosageConfirmationFormJsonData: IDosageConfirmationFormJson = new CmDosageConfirmationJson();
@@ -72,6 +74,7 @@ export class DcFormTechnicalDataFrameComponent {
   async saveTechnicalData() {
     if (this.selectedFromDate.value !== null) {
       this.iDosageConfirmationFormJsonData.screedConstructionFrom = this.selectedFromDate.value;
+      this.iDosageConfirmationFormJsonData.plumberEmail = this.plumber_email_value;
     }
     if (this.selectedUntilDate.value !== null) {
       this.iDosageConfirmationFormJsonData.screedConstructionUntil = this.selectedUntilDate.value;
@@ -88,7 +91,7 @@ export class DcFormTechnicalDataFrameComponent {
     console.log("Saved technical data: " + JSON.stringify(this.iDosageConfirmationFormJsonData));
 
     if(this.isChecked) {
-      await this.router.navigate(['/heating-protocol-confirmation-frame', this.iDosageConfirmationFormJsonData.id]);
+      await this.router.navigate(['/invite-plumber-to-hp-frame', this.iDosageConfirmationFormJsonData.id]);
     } else {
       await this.router.navigate(['/finished-dc-form', this.iDosageConfirmationFormJsonData.id]);
     }

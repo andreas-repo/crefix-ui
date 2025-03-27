@@ -20,8 +20,7 @@ import {MatButton} from '@angular/material/button';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatTooltip,
-    MatButton
+    MatTooltip
   ],
   templateUrl: './dc-form-executing-company-frame.component.html',
   styleUrl: './dc-form-executing-company-frame.component.css'

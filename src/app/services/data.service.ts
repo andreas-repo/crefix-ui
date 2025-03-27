@@ -74,4 +74,8 @@ export class DataService {
   updateHeatingProtocol(id: string, body: string): Observable<any> {
     return this.http.post<any>(this.apiUrl + "/updateHeatingProtocol/" + id, body, {headers: {'Content-Type': 'application/json'}});
   }
+
+  sendHeatingProtocolConfirmationInvitation(body: string): Observable<any> {
+    return this.http.post<any>(this.apiUrl + '/mail/plumber/send', body, {headers: {'Content-Type': 'application/json'}});
+  }
 }

@@ -38,41 +38,112 @@
     </div>
   </div>
 
-  <div id="table-container">
-    <table mat-table [dataSource]="dataSource">
-      <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
-        <th mat-header-cell *matHeaderCellDef>
-          {{ col.label }}
-        </th>
-        <td mat-cell *matCellDef="let element">
-          <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
-            <div class="btn-edit" *ngSwitchCase="'isEdit'">
-              <button mat-button (click)="element.isEdit = !element.isEdit">Edit</button>
-            </div>
-            <span *ngSwitchDefault>
-            {{ element[col.key] }}
-          </span>
-          </div>
-          <div *ngIf="element.isEdit">
-            <div class="btn-edit" *ngIf="col.key === 'isEdit'; else dataField">
-              <button mat-button (click)="element.isEdit = !element.isEdit">Done</button>
-            </div>
-            <ng-template #dataField>
-              <mat-form-field>
-                <input
-                  [type]="col.type"
-                  matInput
-                  [(ngModel)]="element[col.key]"
-                />
-              </mat-form-field>
-            </ng-template>
-          </div>
+  <table id="temperature_confirmation_table">
+    <thead>
+      <tr>
+        <th style="border-bottom: 3px solid #37a937; margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0;">Tage Belegereifheizen</th>
+        <th style="border-bottom: 3px solid #37a937; margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0;">Soll-Vorlauftemperatur</th>
+        <th style="border-bottom: 3px solid #37a937; margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0;">Abgelesene Vorlauftemperatur</th>
+        <th style="border-bottom: 3px solid #37a937; margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0;">Datum & Uhrzeit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="1" style="text-align: center;">
+        <td style="text-align: left; display: inline-block;">1. Tag</td>
+        <td>20 C°</td>
+        <td>
+          <input type="text" placeholder="~20 C°" [(ngModel)]="day_one_value" [contentEditable]="true" width="25%">
         </td>
-      </ng-container>
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
-  </div>
+        <td>
+          <input type="text" placeholder="" [(ngModel)]="day_one_date" [contentEditable]="false" width="25%">
+        </td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr id="2" style="text-align: center;">
+        <td style="text-align: left; display: inline-block;">2. Tag</td>
+        <td>25 C°</td>
+        <td>
+          <input type="text" placeholder="~25 C°" [(ngModel)]="day_two_value" [contentEditable]="true" width="25%">
+        </td>
+        <td>
+          <input type="text" placeholder="" [(ngModel)]="day_two_date" [contentEditable]="false" width="25%">
+        </td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr id="3" style="text-align: center;">
+        <td style="text-align: left; display: inline-block;">3. Tag</td>
+        <td>30 C°</td>
+        <td>
+          <input type="text" placeholder="~30 C°" [(ngModel)]="day_three_value" [contentEditable]="true" width="25%">
+        </td>
+        <td>
+          <input type="text" placeholder="" [(ngModel)]="day_three_date" [contentEditable]="false" width="25%">
+        </td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr id="4" style="text-align: center;">
+        <td style="text-align: left; display: inline-block;">4.-8. Tag</td>
+        <td>40 C°</td>
+        <td>
+          <input type="text" placeholder="~40 C°" [(ngModel)]="day_four_to_eight_value" [contentEditable]="true" width="25%">
+        </td>
+        <td>
+          <input type="text" placeholder="" [(ngModel)]="day_four_to_eight_date" [contentEditable]="false" width="25%">
+        </td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr id="5" style="text-align: center;">
+        <td style="text-align: left; display: inline-block;">9. Tag</td>
+        <td>30 C°</td>
+        <td>
+          <input type="text" placeholder="~30 C°" [(ngModel)]="day_nine_value" [contentEditable]="true" width="25%">
+        </td>
+        <td>
+          <input type="text" placeholder="" [(ngModel)]="day_nine_date" [contentEditable]="false" width="25%">
+        </td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr id="6" style="text-align: center;">
+        <td style="text-align: left; display: inline-block;">10.-11. Tag</td>
+        <td>25 C°</td>
+        <td>
+          <input type="text" placeholder="~25 C°" [(ngModel)]="day_ten_to_eleven_value" [contentEditable]="true" width="25%">
+        </td>
+        <td>
+          <input type="text" placeholder="" [(ngModel)]="day_ten_to_eleven_date" [contentEditable]="false" width="25%">
+        </td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr id="7" style="text-align: center;">
+        <td style="text-align: left; display: inline-block;">12. Tag</td>
+        <td>20 C°</td>
+        <td>
+          <input type="text" placeholder="~20 C°" [(ngModel)]="day_twelve_value" [contentEditable]="true" width="25%">
+        </td>
+        <td>
+          <input type="text" placeholder="" [(ngModel)]="day_twelve_date" [contentEditable]="false" width="25%">
+        </td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr id="8" style="text-align: center;">
+        <td style="text-align: left; display: inline-block;">13. Tag</td>
+        <td>CM-Messung bei 20C°</td>
+        <td>
+          <input type="text" placeholder="~20 C°" [(ngModel)]="day_thirteen_value" [contentEditable]="true" width="25%">
+        </td>
+        <td>
+          <input type="text" placeholder="" [(ngModel)]="day_thirteen_date" [contentEditable]="false" width="25%">
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
   <div class="group">
     <div class="vertical-content">

@@ -1,5 +1,6 @@
 import {JsonObject, JsonProperty} from 'json2typescript';
 import {Deserializable} from './deserializable.model';
+import {input} from '@angular/core';
 
 export interface IDosageConfirmationFormJson {
   id: string;
@@ -12,6 +13,9 @@ export interface IDosageConfirmationFormJson {
   contactPerson: string;
   contactPersonPhone: string;
   contactPersonEmail: string;
+  plumber: string;
+  plumberEmail: string;
+  plumberPhone: string;
   appointmentDate: string;
   appointmentTime: string;
   screedConstructionFrom: string;
@@ -49,6 +53,9 @@ export class CmDosageConfirmationJson implements Deserializable, IDosageConfirma
   _contactPersonPhone: string = '';
   @JsonProperty('contactPersonEmail', String)
   _contactPersonEmail: string = '';
+  @JsonProperty('plumber', String) private _plumber: string = '';
+  @JsonProperty('plumberEmail', String) private _plumberEmail: string = '';
+  @JsonProperty('plumberPhone', String) private _plumberPhone: string = '';
   @JsonProperty('appointmentDate', String)
   _appointmentDate: string = '';
   @JsonProperty('appointmentTime', String)
@@ -160,6 +167,30 @@ export class CmDosageConfirmationJson implements Deserializable, IDosageConfirma
 
   set contactPersonEmail(value: string) {
     this._contactPersonEmail = value;
+  }
+
+  get plumber(): string {
+    return this._plumber;
+  }
+
+  set plumber(value: string) {
+    this._plumber = value;
+  }
+
+  get plumberEmail(): string {
+    return this._plumberEmail;
+  }
+
+  set plumberEmail(value: string) {
+    this._plumberEmail = value;
+  }
+
+  get plumberPhone(): string {
+    return this._plumberPhone;
+  }
+
+  set plumberPhone(value: string) {
+    this._plumberPhone = value;
   }
 
   get appointmentDate(): string {
