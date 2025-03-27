@@ -4,11 +4,18 @@ import {CmDocumentJson, ICmDocumentJson} from '../../models/cm-document.model';
 import {DataService} from '../../services/data.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {firstValueFrom} from 'rxjs';
+import {MatFormField, MatLabel} from '@angular/material/form-field';
+import {MatOption} from '@angular/material/core';
+import {MatSelect} from '@angular/material/select';
 
 @Component({
   selector: 'app-screed-details-frame',
   imports: [
-    FormsModule
+    FormsModule,
+    MatFormField,
+    MatLabel,
+    MatOption,
+    MatSelect
   ],
   templateUrl: './screed-details-frame.component.html',
   styleUrl: './screed-details-frame.component.css'

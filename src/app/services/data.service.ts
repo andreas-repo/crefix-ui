@@ -78,4 +78,8 @@ export class DataService {
   sendHeatingProtocolConfirmationInvitation(body: string): Observable<any> {
     return this.http.post<any>(this.apiUrl + '/mail/plumber/send', body, {headers: {'Content-Type': 'application/json'}});
   }
+
+  getCrefixProducts(): Observable<any> {
+    return  this.http.get<any|string>(this.apiUrl + 'products', {headers: {'Content-Type': 'application/json'}});
+  }
 }

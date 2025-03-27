@@ -13,6 +13,24 @@
       </div>
 
       <div class="input-field">
+        <span class="text-label">{{ crefix_type_label }}</span>
+        <div class="input-element">
+          <mat-form-field>
+            <mat-label>Auswählen...</mat-label>
+            <mat-select [(value)]="crefix_type_value">
+              <mat-option value="Crefix Green">Crefix Green</mat-option>
+              <mat-option value="Crefix Violet">Crefix Violet</mat-option>
+              <mat-option value="Crefix Red Power">Crefix Red Power</mat-option>
+              <mat-option value="Crefix Red Power">Crefix Yellow</mat-option>
+              <mat-option value="Crefix Red Power">Crefix Gold</mat-option>
+              <mat-option value="Crefix Red Power">Crefix Blue</mat-option>
+              <mat-option value="Crefix Red Power">Crefix Orange</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="input-field">
         <span class="text-label">{{ dosage_label }}</span>
         <div class="input-element">
           <input class="input-field" placeholder="Dosierung in ml" [(ngModel)]="dosage_value" [contentEditable]="true">

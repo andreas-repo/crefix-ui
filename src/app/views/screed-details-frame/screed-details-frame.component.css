@@ -132,6 +132,8 @@
 }
 
 .input-field {
+  width: 100%;
+  border: white;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -139,9 +141,7 @@
   align-items: flex-start;
   gap: 8px;
   box-sizing: inherit;
-  width: 100%;
   align-self: center;
-  border: white;
 }
 
 .text-label {
@@ -186,4 +186,8 @@
   background-color: white;
   color: black;
   align-self: center;
+}
+
+.mat-mdc-form-field {
+  display: contents;
 }

@@ -29,7 +29,14 @@
       <div class="input-field">
         <span class="text-label">{{ country_label }}</span>
         <div class="input-element">
-          <input class="input-field" placeholder="Österreich" [(ngModel)]="country_value" [contentEditable]="true">
+          <mat-form-field>
+            <mat-label>Auswählen...</mat-label>
+            <mat-select [(value)]="country_value">
+              <mat-option value="Österreich">Österreich</mat-option>
+              <mat-option value="Deutschland">Deutschland</mat-option>
+              <mat-option value="Schweiz">Schweiz</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
       </div>
     </div>

@@ -74,8 +74,12 @@ export class DcFormTechnicalDataFrameComponent {
   async saveTechnicalData() {
     if (this.selectedFromDate.value !== null) {
       this.iDosageConfirmationFormJsonData.screedConstructionFrom = this.selectedFromDate.value;
+    }
+
+    if (this.isChecked) {
       this.iDosageConfirmationFormJsonData.plumberEmail = this.plumber_email_value;
     }
+
     if (this.selectedUntilDate.value !== null) {
       this.iDosageConfirmationFormJsonData.screedConstructionUntil = this.selectedUntilDate.value;
     }

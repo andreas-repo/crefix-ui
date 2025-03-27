@@ -4,12 +4,19 @@ import {CmDocumentJson, ICmDocumentJson} from '../../models/cm-document.model';
 import {DataService} from '../../services/data.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {firstValueFrom} from 'rxjs';
+import {MatFormField, MatLabel} from "@angular/material/form-field";
+import {MatOption} from "@angular/material/core";
+import {MatSelect} from "@angular/material/select";
 
 @Component({
   selector: 'app-job-site-frame',
-  imports: [
-    FormsModule
-  ],
+    imports: [
+        FormsModule,
+        MatFormField,
+        MatLabel,
+        MatOption,
+        MatSelect
+    ],
   templateUrl: './job-site-frame.component.html',
   styleUrl: './job-site-frame.component.css'
 })
