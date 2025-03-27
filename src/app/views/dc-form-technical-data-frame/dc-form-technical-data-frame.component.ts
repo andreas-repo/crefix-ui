@@ -68,7 +68,7 @@ export class DcFormTechnicalDataFrameComponent {
   }
 
   returnOnePage() {
-    this.router.navigate(['/dc-form-executing-company-frame', this.id]);
+    this.router.navigate(['/dc-form-executing-company-frame']);
   }
 
   async saveTechnicalData() {

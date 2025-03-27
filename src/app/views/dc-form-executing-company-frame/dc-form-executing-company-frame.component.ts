@@ -7,9 +7,10 @@ import {firstValueFrom} from 'rxjs';
 import {CommonModule} from '@angular/common';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
+import {MatNativeDateModule, MatOption} from '@angular/material/core';
 import {MatTooltip, TooltipPosition} from '@angular/material/tooltip';
 import {MatButton} from '@angular/material/button';
+import {MatSelect} from "@angular/material/select";
 
 @Component({
   selector: 'app-dc-form-executing-company-frame',
@@ -20,7 +21,9 @@ import {MatButton} from '@angular/material/button';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatTooltip
+    MatTooltip,
+    MatSelect,
+    MatOption
   ],
   templateUrl: './dc-form-executing-company-frame.component.html',
   styleUrl: './dc-form-executing-company-frame.component.css'

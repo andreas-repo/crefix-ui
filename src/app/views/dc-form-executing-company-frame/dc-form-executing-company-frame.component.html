@@ -36,7 +36,14 @@
       <div class="input-field">
         <span class="text-label">{{ job_site_country_label }}</span>
         <div class="input-element">
-          <input class="input-field" placeholder="Land in welchem die Bauarbeiten stattfinden" [(ngModel)]="job_site_country_value" [contentEditable]="true">
+          <mat-form-field>
+            <mat-label>Auswählen...</mat-label>
+            <mat-select [(value)]="job_site_country_value">
+              <mat-option value="Österreich">Österreich</mat-option>
+              <mat-option value="Deutschland">Deutschland</mat-option>
+              <mat-option value="Schweiz">Schweiz</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
       </div>
 
@@ -44,7 +51,7 @@
         <span class="text-label">
           {{ contact_person_label }}
           <button class="tooltip-button"
-                  matTooltip="Installateur oder Estrichleger, welcher den nächsten Schritt ausführt."
+                  matTooltip="Partner auf der Baustelle welcher den Messungsschritt ausführen wird."
                   [matTooltipPosition]='position.value!'>
           ?
           </button>
@@ -59,7 +66,7 @@
         <span class="text-label">
           {{ contact_person_phone_label }}
           <button class="tooltip-button"
-                  matTooltip="Telefonnummer von Installateur oder Estrichleger, welcher den nächsten Schritt ausführt."
+                  matTooltip="Telefonnummer von Partner auf der Bausteller, welcher die Messung(en) durchführen wird."
                   [matTooltipPosition]='position.value!'>
           ?
           </button>
@@ -74,7 +81,7 @@
         <span class="text-label">
           {{ contact_person_email_label }}
           <button class="tooltip-button"
-                  matTooltip="Emailadresse von Installateur oder Estrichleger, welcher den nächsten Schritt ausführt."
+                  matTooltip="Emailadresse von Partner auf der Bausteller, welcher die Messung(en) durchführen wird."
                   [matTooltipPosition]='position.value!'>
           ?
           </button>
