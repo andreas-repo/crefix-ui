@@ -35,7 +35,7 @@ export class DcFormTechnicalDataFrameComponent {
   selectedUntilDate: FormControl = new FormControl<string | null>(null);
   screed_area_label: string = 'Estrichfläche:';
   screed_area_value: string = '';
-  screed_strength_label: string = 'Estrichfestigkeit:';
+  screed_strength_label: string = 'Estrichstärke:';
   screed_strength_value: string = '';
   has_underfloor_heating_label: string = 'Hat Fußbodenheizung:';
   isChecked: boolean = false;
